@@ -409,9 +409,6 @@ footer {
 .extra-projects-inner {
   overflow: hidden;
 }
-.extra-projects-inner .project-card {
-  margin-top: 20px;
-}
 
 /* ── See More button ── */
 .see-more-btn {
@@ -420,7 +417,6 @@ footer {
   justify-content: center;
   gap: 6px;
   width: 100%;
-  margin-top: 20px;
   padding: 10px 20px;
   background: var(--surface);
   border: 1px dashed var(--border);

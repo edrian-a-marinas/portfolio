@@ -1,6 +1,5 @@
 // App.jsx — edit the DATA section at the top to update your portfolio.
 const { useState, useEffect } = React
-
 // ── DATA ─────────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
   { label: 'Skills',     href: '#skills'     },
@@ -82,7 +81,6 @@ const EXTRA_PROJECTS = [
     ],
     stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
   },
-  
   {
     name:     'Placeholder App Again',
     live:     null,
@@ -90,14 +88,13 @@ const EXTRA_PROJECTS = [
     year:     '2024',
     subtitle: 'One-line hahahahahahahaha of what this project does',
     bullets: [
-      'hahahaha ha of the project — what problem it solves and who it is for.',
+      'Brief ha of the project — what problem it solves and who it is for.',
       'Key technical highlight — architecture decision, interesting challenge, or notable feature.',
       'Another bullet covering scope, scale, or outcome of the project.',
     ],
     stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
   },
 ]
-
 const EXPERIENCE = [
   {
     role: 'Software Developer',
@@ -110,8 +107,6 @@ const EXPERIENCE = [
     ],
   },
 ]
-
-
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
   { school: 'Arellano University',           degree: 'Senior High School · STEM Strand',              date: '2020 – 2022'    },
@@ -121,7 +116,6 @@ const CERTIFICATIONS = [
   { name: 'Python Essentials 1 & 2 Certificate · Cisco NetAcad',                           year: '2024'   },
   { name: 'Seminar: Digital Fabric — AI Imperatives and Risk, and Multimedia Augmentation', year: '[Year]' },
 ]
-
 // ── ICONS ─────────────────────────────────────────────────────────────────────
 const IconExternal = () => (
   <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -136,7 +130,6 @@ const IconVideo = () => (
     <rect x="1" y="5" width="15" height="14" rx="2"/>
   </svg>
 )
-
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
 function Lightbox({ src, alt, onClose }) {
   useEffect(() => {
@@ -175,7 +168,6 @@ function Lightbox({ src, alt, onClose }) {
     </div>
   )
 }
-
 // ── NAV ───────────────────────────────────────────────────────────────────────
 function Nav({ hoveredSection }) {
   const scrollTo = (e, href) => {
@@ -206,9 +198,7 @@ function Nav({ hoveredSection }) {
     </nav>
   )
 }
-
 // ── SECTION WRAPPER ───────────────────────────────────────────────────────────
-// Wraps each section and fires onHover(id) when mouse enters, onHover(null) when it leaves
 function S({ id, onHover, children }) {
   return (
     <section
@@ -220,7 +210,6 @@ function S({ id, onHover, children }) {
     </section>
   )
 }
-
 // ── SECTIONS ──────────────────────────────────────────────────────────────────
 function Hero({ onPhotoClick, onHover }) {
   return (
@@ -259,7 +248,6 @@ function Hero({ onPhotoClick, onHover }) {
     </section>
   )
 }
-
 function Skills({ onHover }) {
   return (
     <S id="skills" onHover={onHover}>
@@ -279,7 +267,6 @@ function Skills({ onHover }) {
     </S>
   )
 }
-
 function ProjectCard({ p }) {
   return (
     <div className="project-card">
@@ -310,18 +297,14 @@ function ProjectCard({ p }) {
     </div>
   )
 }
-
 function Projects({ onHover }) {
   const [expanded, setExpanded] = useState(false)
-
   return (
     <S id="projects" onHover={onHover}>
       <div className="container">
         <p className="section-label">Projects</p>
-
         {/* Always-visible projects */}
         {PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
-
         {/* Expandable extra projects */}
         {EXTRA_PROJECTS.length > 0 && (
           <>
@@ -330,12 +313,12 @@ function Projects({ onHover }) {
                 {EXTRA_PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
               </div>
             </div>
-
             <button
               className="see-more-btn"
+              style={{ marginTop: expanded ? '20px' : '0' }}
               onClick={() => setExpanded(prev => !prev)}
             >
-              <span>{expanded ? 'Hide projects' : `See more projects`}</span>
+              <span>{expanded ? 'Hide projects' : 'See more projects'}</span>
               <svg
                 className={`see-more-chevron ${expanded ? 'see-more-chevron--up' : ''}`}
                 fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"
@@ -349,7 +332,6 @@ function Projects({ onHover }) {
     </S>
   )
 }
-
 function Experience({ onHover }) {
   return (
     <S id="experience" onHover={onHover}>
@@ -380,7 +362,6 @@ function Experience({ onHover }) {
     </S>
   )
 }
-
 function Education({ onHover }) {
   return (
     <S id="education" onHover={onHover}>
@@ -399,7 +380,6 @@ function Education({ onHover }) {
     </S>
   )
 }
-
 function Certifications({ onHover }) {
   return (
     <S id="certifications" onHover={onHover}>
@@ -420,7 +400,6 @@ function Certifications({ onHover }) {
     </S>
   )
 }
-
 function Footer() {
   const footerContacts = CONTACTS.filter(c =>
     c.href.startsWith('mailto:') || c.label === 'LinkedIn'
@@ -444,12 +423,10 @@ function Footer() {
     </footer>
   )
 }
-
 // ── APP ───────────────────────────────────────────────────────────────────────
 function App() {
   const [hoveredSection, setHoveredSection] = useState(null)
   const [lightbox, setLightbox] = useState(false)
-
   return (
     <>
       {lightbox && (
@@ -470,6 +447,5 @@ function App() {
     </>
   )
 }
-
 // ── MOUNT ─────────────────────────────────────────────────────────────────────
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
