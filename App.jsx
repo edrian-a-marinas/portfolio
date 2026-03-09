@@ -1,17 +1,13 @@
 // App.jsx — edit the DATA section at the top to update your portfolio.
-// Runs in the browser via Babel standalone CDN — no build step needed.
-
 const { useState, useEffect } = React
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
-
 const NAV_LINKS = [
   { label: 'Skills',     href: '#skills'     },
   { label: 'Projects',   href: '#projects'   },
   { label: 'Experience', href: '#experience' },
   { label: 'Education',  href: '#education'  },
 ]
-
 const CONTACTS = [
   {
     label: 'edrian.a.marinas@gmail.com',
@@ -34,7 +30,6 @@ const CONTACTS = [
     icon:  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>,
   },
 ]
-
 const SKILLS = [
   { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'Pydantic', 'asyncpg', 'Type Annotations'] },
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling'] },
@@ -42,7 +37,6 @@ const SKILLS = [
   { category: 'Tools',     tags: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
   { category: 'Concepts',  tags: ['JWT Auth', 'RBAC', 'HTTP', 'Routing', 'End-to-End Type Safety', 'Schema Validation'] },
 ]
-
 const PROJECTS = [
   {
     name:     'TransacScope',
@@ -72,18 +66,7 @@ const PROJECTS = [
     ],
     stack: ['Python', 'FastAPI', 'React', 'OLLAMA', 'REST API'],
   },
-  // Add more projects here:
-  // {
-  //   name:     '[Project Name]',
-  //   live:     null,
-  //   demo:     null,
-  //   year:     '[Year]',
-  //   subtitle: '[One-line description]',
-  //   bullets:  ['[What it does]', '[Technical highlight]'],
-  //   stack:    ['[Stack]'],
-  // },
 ]
-
 const EXPERIENCE = [
   {
     role: 'Software Developer',
@@ -95,21 +78,11 @@ const EXPERIENCE = [
       'Integrated IoT devices with a Pi Pico W, transmitting real-time sensor data in JSON format to the back-end for monitoring.',
     ],
   },
-  // Add more experience here:
-  // {
-  //   role:    '[Role]',
-  //   org:     '[Company · Organization]',
-  //   date:    '[Month Year – Month Year]',
-  //   demo:    null,
-  //   bullets: ['[What you did]', '[Impact]'],
-  // },
 ]
-
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
   { school: 'Arellano University',           degree: 'Senior High School · STEM Strand',              date: '2020 – 2022'    },
 ]
-
 const CERTIFICATIONS = [
   { name: 'IT Specialist – Python · Certiport CertNExus Pearson',                          year: '2026'   },
   { name: 'Python Essentials 1 & 2 Certificate · Cisco NetAcad',                           year: '2024'   },
@@ -117,7 +90,6 @@ const CERTIFICATIONS = [
 ]
 
 // ── ICONS ─────────────────────────────────────────────────────────────────────
-
 const IconExternal = () => (
   <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -125,7 +97,6 @@ const IconExternal = () => (
     <line x1="10" y1="14" x2="21" y2="3"/>
   </svg>
 )
-
 const IconVideo = () => (
   <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <polygon points="23 7 16 12 23 17 23 7"/>
@@ -134,14 +105,12 @@ const IconVideo = () => (
 )
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
-
 function Lightbox({ src, alt, onClose }) {
   useEffect(() => {
     const onKey = e => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
-
   return (
     <div
       onClick={onClose}
@@ -174,9 +143,8 @@ function Lightbox({ src, alt, onClose }) {
   )
 }
 
-// ── COMPONENTS ────────────────────────────────────────────────────────────────
-
-function Nav({ activeSection }) {
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function Nav({ hoveredSection }) {
   const scrollTo = (e, href) => {
     e.preventDefault()
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -186,30 +154,48 @@ function Nav({ activeSection }) {
       <div className="nav-inner">
         <span className="nav-name">Edrian Mariñas</span>
         <ul className="nav-links">
-          {NAV_LINKS.map(link => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={activeSection === link.href.slice(1) ? 'active' : ''}
-                onClick={e => scrollTo(e, link.href)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {NAV_LINKS.map(link => {
+            const id = link.href.slice(1)
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={hoveredSection === id ? 'active' : ''}
+                  onClick={e => scrollTo(e, link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </nav>
   )
 }
 
-function Hero({ onPhotoClick }) {
+// ── SECTION WRAPPER ───────────────────────────────────────────────────────────
+// Wraps each section and fires onHover(id) when mouse enters, onHover(null) when it leaves
+function S({ id, onHover, children }) {
   return (
-    <section id="hero">
+    <section
+      id={id}
+      onMouseEnter={() => onHover(id)}
+      onMouseLeave={() => onHover(null)}
+    >
+      {children}
+    </section>
+  )
+}
+
+// ── SECTIONS ──────────────────────────────────────────────────────────────────
+function Hero({ onPhotoClick, onHover }) {
+  return (
+    <section id="hero" onMouseEnter={() => onHover(null)}>
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
-            <h1 className="hero-name">Edrian Aldrin Mariñas</h1>
+            <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
             <p className="hero-title">Software Developer · Metro Manila, PH</p>
             <p className="hero-bio">
               Experienced in building APIs using Python and FastAPI, working with databases
@@ -227,8 +213,7 @@ function Hero({ onPhotoClick }) {
                   target={c.href.startsWith('http') ? '_blank' : undefined}
                   rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  {c.icon}
-                  {c.label}
+                  {c.icon}{c.label}
                 </a>
               ))}
             </div>
@@ -242,9 +227,9 @@ function Hero({ onPhotoClick }) {
   )
 }
 
-function Skills() {
+function Skills({ onHover }) {
   return (
-    <section id="skills">
+    <S id="skills" onHover={onHover}>
       <div className="container">
         <p className="section-label">Skills</p>
         <div className="skills-grid">
@@ -258,13 +243,13 @@ function Skills() {
           ))}
         </div>
       </div>
-    </section>
+    </S>
   )
 }
 
-function Projects() {
+function Projects({ onHover }) {
   return (
-    <section id="projects">
+    <S id="projects" onHover={onHover}>
       <div className="container">
         <p className="section-label">Projects</p>
         {PROJECTS.map(p => (
@@ -296,13 +281,13 @@ function Projects() {
           </div>
         ))}
       </div>
-    </section>
+    </S>
   )
 }
 
-function Experience() {
+function Experience({ onHover }) {
   return (
-    <section id="experience">
+    <S id="experience" onHover={onHover}>
       <div className="container">
         <p className="section-label">Experience</p>
         {EXPERIENCE.map(e => (
@@ -327,13 +312,13 @@ function Experience() {
           </div>
         ))}
       </div>
-    </section>
+    </S>
   )
 }
 
-function Education() {
+function Education({ onHover }) {
   return (
-    <section id="education">
+    <S id="education" onHover={onHover}>
       <div className="container">
         <p className="section-label">Education</p>
         {EDUCATION.map(e => (
@@ -346,13 +331,13 @@ function Education() {
           </div>
         ))}
       </div>
-    </section>
+    </S>
   )
 }
 
-function Certifications() {
+function Certifications({ onHover }) {
   return (
-    <section id="certifications">
+    <S id="certifications" onHover={onHover}>
       <div className="container">
         <p className="section-label">Certifications &amp; Training</p>
         <div className="cert-list">
@@ -367,7 +352,7 @@ function Certifications() {
           ))}
         </div>
       </div>
-    </section>
+    </S>
   )
 }
 
@@ -386,34 +371,19 @@ function Footer() {
             target={c.href.startsWith('http') ? '_blank' : undefined}
             rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
           >
-            {c.icon}
-            {c.label}
+            {c.icon}{c.label}
           </a>
         ))}
       </div>
-      <p className="footer-copy">Edrian Aldrin Mariñas · Metro Manila, PH</p>
+      <p className="footer-copy">Edrian Aldrin C. Mariñas · Metro Manila, PH</p>
     </footer>
   )
 }
 
 // ── APP ───────────────────────────────────────────────────────────────────────
-
 function App() {
-  const [activeSection, setActiveSection] = useState('hero')
+  const [hoveredSection, setHoveredSection] = useState(null)
   const [lightbox, setLightbox] = useState(false)
-
-  useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
-    const onScroll = () => {
-      let current = 'hero'
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 80) current = s.id
-      })
-      setActiveSection(current)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <>
@@ -424,18 +394,17 @@ function App() {
           onClose={() => setLightbox(false)}
         />
       )}
-      <Nav activeSection={activeSection} />
-      <Hero onPhotoClick={() => setLightbox(true)} />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Education />
-      <Certifications />
+      <Nav hoveredSection={hoveredSection} />
+      <Hero       onPhotoClick={() => setLightbox(true)} onHover={setHoveredSection} />
+      <Skills     onHover={setHoveredSection} />
+      <Projects   onHover={setHoveredSection} />
+      <Experience onHover={setHoveredSection} />
+      <Education  onHover={setHoveredSection} />
+      <Certifications onHover={setHoveredSection} />
       <Footer />
     </>
   )
 }
 
 // ── MOUNT ─────────────────────────────────────────────────────────────────────
-
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
