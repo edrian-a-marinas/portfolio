@@ -393,3 +393,56 @@ footer {
   .hero-inner  { flex-direction: column-reverse; align-items: flex-start; gap: 24px; }
   .hero-photo-wrap { width: 90px; height: 90px; }
 }
+
+
+/* ── Extra Projects (expandable) ── */
+/* Paste these rules at the bottom of your style.css */
+
+.extra-projects {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.extra-projects--open {
+  grid-template-rows: 1fr;
+}
+.extra-projects-inner {
+  overflow: hidden;
+}
+.extra-projects-inner .project-card {
+  margin-top: 20px;
+}
+
+/* ── See More button ── */
+.see-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.see-more-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.see-more-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.see-more-chevron--up {
+  transform: rotate(180deg);
+}

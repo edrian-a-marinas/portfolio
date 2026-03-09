@@ -67,6 +67,37 @@ const PROJECTS = [
     stack: ['Python', 'FastAPI', 'React', 'OLLAMA', 'REST API'],
   },
 ]
+// Projects shown after clicking "See more projects"
+const EXTRA_PROJECTS = [
+  {
+    name:     'Placeholder App Title',
+    live:     null,
+    demo:     null,
+    year:     '2025',
+    subtitle: 'One-line description of what this project does',
+    bullets: [
+      'Brief overview of the project — what problem it solves and who it is for.',
+      'Key technical highlight — architecture decision, interesting challenge, or notable feature.',
+      'Another bullet covering scope, scale, or outcome of the project.',
+    ],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
+  },
+  
+  {
+    name:     'Placeholder App Again',
+    live:     null,
+    demo:     null,
+    year:     '2024',
+    subtitle: 'One-line hahahahahahahaha of what this project does',
+    bullets: [
+      'hahahaha ha of the project — what problem it solves and who it is for.',
+      'Key technical highlight — architecture decision, interesting challenge, or notable feature.',
+      'Another bullet covering scope, scale, or outcome of the project.',
+    ],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
+  },
+]
+
 const EXPERIENCE = [
   {
     role: 'Software Developer',
@@ -79,6 +110,8 @@ const EXPERIENCE = [
     ],
   },
 ]
+
+
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
   { school: 'Arellano University',           degree: 'Senior High School · STEM Strand',              date: '2020 – 2022'    },
@@ -195,7 +228,7 @@ function Hero({ onPhotoClick, onHover }) {
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
-            <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
+            <h1 className="hero-name">Edrian Aldrin Mariñas</h1>
             <p className="hero-title">Software Developer · Metro Manila, PH</p>
             <p className="hero-bio">
               Experienced in building APIs using Python and FastAPI, working with databases
@@ -247,39 +280,71 @@ function Skills({ onHover }) {
   )
 }
 
+function ProjectCard({ p }) {
+  return (
+    <div className="project-card">
+      <div className="project-top">
+        <span className="project-name">{p.name}</span>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          {p.live && (
+            <a className="project-live" href={p.live} target="_blank" rel="noopener noreferrer">
+              <IconExternal /> Live Demo
+            </a>
+          )}
+          {p.demo && (
+            <a className="project-demo" href={p.demo} target="_blank" rel="noopener noreferrer">
+              <IconVideo /> Demo Vid
+            </a>
+          )}
+        </div>
+      </div>
+      <p className="project-subtitle">
+        {p.subtitle}{p.year && <span className="project-year"> · {p.year}</span>}
+      </p>
+      <ul className="project-bullets">
+        {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
+      </ul>
+      <div className="project-stack">
+        {p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
+      </div>
+    </div>
+  )
+}
+
 function Projects({ onHover }) {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <S id="projects" onHover={onHover}>
       <div className="container">
         <p className="section-label">Projects</p>
-        {PROJECTS.map(p => (
-          <div key={p.name} className="project-card">
-            <div className="project-top">
-              <span className="project-name">{p.name}</span>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                {p.live && (
-                  <a className="project-live" href={p.live} target="_blank" rel="noopener noreferrer">
-                    <IconExternal /> Live Demo
-                  </a>
-                )}
-                {p.demo && (
-                  <a className="project-demo" href={p.demo} target="_blank" rel="noopener noreferrer">
-                    <IconVideo /> Demo Vid
-                  </a>
-                )}
+
+        {/* Always-visible projects */}
+        {PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
+
+        {/* Expandable extra projects */}
+        {EXTRA_PROJECTS.length > 0 && (
+          <>
+            <div className={`extra-projects ${expanded ? 'extra-projects--open' : ''}`}>
+              <div className="extra-projects-inner">
+                {EXTRA_PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
               </div>
             </div>
-            <p className="project-subtitle">
-              {p.subtitle}{p.year && <span className="project-year"> · {p.year}</span>}
-            </p>
-            <ul className="project-bullets">
-              {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-            </ul>
-            <div className="project-stack">
-              {p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
-            </div>
-          </div>
-        ))}
+
+            <button
+              className="see-more-btn"
+              onClick={() => setExpanded(prev => !prev)}
+            >
+              <span>{expanded ? 'Hide projects' : `See more projects`}</span>
+              <svg
+                className={`see-more-chevron ${expanded ? 'see-more-chevron--up' : ''}`}
+                fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"
+              >
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          </>
+        )}
       </div>
     </S>
   )
@@ -375,7 +440,7 @@ function Footer() {
           </a>
         ))}
       </div>
-      <p className="footer-copy">Edrian Aldrin C. Mariñas · Metro Manila, PH</p>
+      <p className="footer-copy">Edrian Aldrin Mariñas · Metro Manila, PH</p>
     </footer>
   )
 }
