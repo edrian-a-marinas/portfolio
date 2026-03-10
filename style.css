@@ -165,6 +165,14 @@ nav {
 }
 .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
 
+.contact-pill--resume {
+  color: var(--accent);
+}
+.contact-pill--resume:hover {
+  background: var(--navy-light);
+  border-color: var(--navy-light);
+  color: white;
+}
 /* ── Skills ── */
 .skills-grid {
   display: grid;
@@ -509,13 +517,3 @@ a.nav-name:hover { color: var(--accent); }
   text-decoration-color: var(--accent);
 }
 
-.contact-pill--resume {
-  background: var(--accent-dim);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-.contact-pill--resume:hover {
-  background: var(--navy-light);
-  border-color: var(--navy-light);
-  color: white;
-}

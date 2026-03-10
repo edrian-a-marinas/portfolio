@@ -34,7 +34,7 @@ const SKILLS = [
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling'] },
   { category: 'Front-end', tags: ['TypeScript', 'React', 'Zod', 'Vite', 'JavaScript', 'HTML/CSS', 'Tailwind'] },
   { category: 'Tools',     tags: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts',  tags: ['JWT Auth', 'RBAC', 'HTTP', 'Routing', 'End-to-End Type Safety', 'Schema Validation'] },
+  { category: 'Concepts',  tags: ['Authentication (JWT)', 'Role-Based Access Control', 'HTTP', 'Routing', 'End-to-End Type Safety', 'Schema Validation'] },
 ]
 const PROJECTS = [
   {
