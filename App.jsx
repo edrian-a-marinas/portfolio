@@ -41,6 +41,7 @@ const PROJECTS = [
     name:     'TransacScope',
     live:     'https://transacscope.vercel.app',
     demo:     'https://drive.google.com/file/d/1fXCICTBrgaCmMWBpuK1JLUi5SkQ1x5tR/view?usp=sharing',
+    github:   null,
     year:     '2026',
     subtitle: 'Role-Based Business Finance & Transaction Management System',
     bullets: [
@@ -57,6 +58,7 @@ const PROJECTS = [
     name:     'Personal AI Profile Assistant',
     live:     null,
     demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view?usp=sharing',
+    github:   'https://github.com/edrian-a-marinas/Personal-AI-Profile-Assistant',
     year:     '2026',
     subtitle: 'AI-powered personal chatbot that answers questions about me',
     bullets: [
@@ -67,12 +69,12 @@ const PROJECTS = [
     stack: ['Python', 'FastAPI', 'React', 'Ollama', 'REST API', 'JavaScript'],
   },
 ]
-// Projects shown after clicking "See more projects"
 const EXTRA_PROJECTS = [
   {
     name:     'Water Level & Temperature Monitoring',
     live:     null,
     demo:     'https://drive.google.com/file/d/1YUDYgXpGBsNw0J_L0D35D3lgeAxLEUCc/view?usp=sharing',
+    github:   'https://github.com/edrian-a-marinas/water_monitoring_mysql',
     year:     '2025',
     subtitle: 'Real-time water level and temperature monitoring with IoT and desktop GUI',
     bullets: [
@@ -86,6 +88,7 @@ const EXTRA_PROJECTS = [
     name:     'Payroll CLI',
     live:     null,
     demo:     'https://drive.google.com/file/d/1T2wwMvsthXSfjcYccfNE6KXKw8S-nATm/view',
+    github:   'https://github.com/edrian-a-marinas/payroll_CLI_postgreSQL',
     year:     '2024',
     subtitle: 'Command-line Payroll & Employee Management System with PostgreSQL',
     bullets: [
@@ -114,9 +117,9 @@ const EDUCATION = [
   { school: 'Arellano University',           degree: 'STEM Strand',              date: '2020 – 2022'    },
 ]
 const CERTIFICATIONS = [
-  { name: 'IT Specialist – Python · Certiport', year: '2026', images: ['certs/cert1.webp'] },
+  { name: 'IT Specialist – Python · Certiport Pearson', year: '2026', images: ['certs/cert1.webp'] },
   { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention', year: '2025', images: ['certs/cert2.webp'] },
-  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad ', year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
+  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad', year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
   { name: 'Backend & Frontend Web Development · Udemy', year: '2024', images: 'certs/cert4.webp' },
   { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course', year: '2025', images: 'certs/cert5.webp' },
 ]
@@ -132,6 +135,11 @@ const IconVideo = () => (
   <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <polygon points="23 7 16 12 23 17 23 7"/>
     <rect x="1" y="5" width="15" height="14" rx="2"/>
+  </svg>
+)
+const IconGitHub = () => (
+  <svg fill="currentColor" viewBox="0 0 24 24" width="11" height="11">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
   </svg>
 )
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
@@ -202,8 +210,6 @@ function Nav({ hoveredSection }) {
     </nav>
   )
 }
-
-
 // ── SECTION WRAPPER ───────────────────────────────────────────────────────────
 function S({ id, onHover, children }) {
   return (
@@ -286,7 +292,7 @@ function ProjectCard({ p }) {
     <div className="project-card">
       <div className="project-top">
         <span className="project-name">{p.name}</span>
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           {p.live && (
             <a className="project-live" href={p.live} target="_blank" rel="noopener noreferrer">
               <IconExternal /> Live Demo
@@ -295,6 +301,11 @@ function ProjectCard({ p }) {
           {p.demo && (
             <a className="project-demo" href={p.demo} target="_blank" rel="noopener noreferrer">
               <IconVideo /> Demo Vid
+            </a>
+          )}
+          {p.github && (
+            <a className="project-github" href={p.github} target="_blank" rel="noopener noreferrer">
+              <IconGitHub /> GitHub
             </a>
           )}
         </div>
@@ -317,9 +328,7 @@ function Projects({ onHover }) {
     <S id="projects" onHover={onHover}>
       <div className="container">
         <p className="section-label">Projects</p>
-        {/* Always-visible projects */}
         {PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
-        {/* Expandable extra projects */}
         {EXTRA_PROJECTS.length > 0 && (
           <>
             <div className={`extra-projects ${expanded ? 'extra-projects--open' : ''}`}>
@@ -400,48 +409,32 @@ function Education({ onHover }) {
 }
 function Certifications({ onHover }) {
   const [imgIdx, setImgIdx] = useState(null)
-
-  // Flatten all images into one array
   const allImgs = CERTIFICATIONS.flatMap(c =>
     Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
   )
-
   const handleKey = React.useCallback(e => {
     if (imgIdx === null) return
     if (e.key === 'ArrowRight') setImgIdx(i => (i + 1) % allImgs.length)
     if (e.key === 'ArrowLeft')  setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)
     if (e.key === 'Escape')     setImgIdx(null)
   }, [imgIdx, allImgs.length])
-
   useEffect(() => {
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
   }, [handleKey])
-
   const openCert = (c) => {
     const firstImg = Array.isArray(c.images) ? c.images[0] : c.images
     const idx = allImgs.indexOf(firstImg)
     if (idx !== -1) setImgIdx(idx)
   }
-
   return (
     <S id="certifications" onHover={onHover}>
       {imgIdx !== null && (
         <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
           <div className="cert-lightbox-inner" onClick={e => e.stopPropagation()}>
-            <img
-              src={allImgs[imgIdx]}
-              alt="Certificate"
-              className="cert-lightbox-img"
-            />
-            <button
-              className="cert-lightbox-btn cert-lightbox-btn--prev"
-              onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}
-            >‹</button>
-            <button
-              className="cert-lightbox-btn cert-lightbox-btn--next"
-              onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}
-            >›</button>
+            <img src={allImgs[imgIdx]} alt="Certificate" className="cert-lightbox-img" />
+            <button className="cert-lightbox-btn cert-lightbox-btn--prev" onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}>‹</button>
+            <button className="cert-lightbox-btn cert-lightbox-btn--next" onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}>›</button>
             <p className="cert-lightbox-counter">{imgIdx + 1} / {allImgs.length}</p>
           </div>
         </div>
