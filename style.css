@@ -508,3 +508,14 @@ a.nav-name:hover { color: var(--accent); }
   text-underline-offset: 3px;
   text-decoration-color: var(--accent);
 }
+
+.contact-pill--resume {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.contact-pill--resume:hover {
+  background: var(--navy-light);
+  border-color: var(--navy-light);
+  color: white;
+}
