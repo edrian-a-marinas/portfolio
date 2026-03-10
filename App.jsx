@@ -118,7 +118,7 @@ const CERTIFICATIONS = [
   { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention', year: '2025', images: ['certs/cert2.webp'] },
   { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad ', year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
   { name: 'Backend & Frontend Web Development · Udemy', year: '2024', images: 'certs/cert4.webp' },
-  { name: 'Integrated Programming Technologies (Python) · CodeChum', year: '2025', images: 'certs/cert5.webp' },
+  { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course', year: '2025', images: 'certs/cert5.webp' },
 ]
 // ── ICONS ─────────────────────────────────────────────────────────────────────
 const IconExternal = () => (
