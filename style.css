@@ -442,3 +442,10 @@ footer {
 .see-more-chevron--up {
   transform: rotate(180deg);
 }
+
+a.nav-name {
+  text-decoration: none;
+  color: var(--navy);
+  transition: color 0.15s;
+}
+a.nav-name:hover { color: var(--accent); }

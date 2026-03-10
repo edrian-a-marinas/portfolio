@@ -177,7 +177,7 @@ function Nav({ hoveredSection }) {
   return (
     <nav>
       <div className="nav-inner">
-        <span className="nav-name">Edrian Mariñas</span>
+        <a className="nav-name" href="#hero" onClick={e => scrollTo(e, '#hero')}>Edrian Mariñas</a>
         <ul className="nav-links">
           {NAV_LINKS.map(link => {
             const id = link.href.slice(1)
@@ -198,6 +198,8 @@ function Nav({ hoveredSection }) {
     </nav>
   )
 }
+
+
 // ── SECTION WRAPPER ───────────────────────────────────────────────────────────
 function S({ id, onHover, children }) {
   return (
@@ -217,7 +219,7 @@ function Hero({ onPhotoClick, onHover }) {
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
-            <h1 className="hero-name">Edrian Aldrin Mariñas</h1>
+            <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
             <p className="hero-title">Software Developer · Metro Manila, PH</p>
             <p className="hero-bio">
               Experienced in building APIs using Python and FastAPI, working with databases
@@ -419,7 +421,7 @@ function Footer() {
           </a>
         ))}
       </div>
-      <p className="footer-copy">Edrian Aldrin Mariñas · Metro Manila, PH</p>
+      <p className="footer-copy">Edrian Aldrin C. Mariñas · Metro Manila, PH</p>
     </footer>
   )
 }
