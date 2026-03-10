@@ -40,7 +40,7 @@ const PROJECTS = [
   {
     name:     'TransacScope',
     live:     'https://transacscope.vercel.app',
-    demo:     'https://drive.google.com/drive/folders/1u7WnkaLEA_4eJaf3D4nfk8o-e--OSsNe?usp=sharing',
+    demo:     'https://drive.google.com/file/d/1fXCICTBrgaCmMWBpuK1JLUi5SkQ1x5tR/view?usp=sharing',
     year:     '2026',
     subtitle: 'Role-Based Business Finance & Transaction Management System',
     bullets: [
@@ -56,54 +56,56 @@ const PROJECTS = [
   {
     name:     'Personal AI Profile Assistant',
     live:     null,
-    demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view',
+    demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view?usp=sharing',
     year:     '2026',
-    subtitle: 'AI-powered personal profile that answers questions about me',
+    subtitle: 'AI-powered personal chatbot that answers questions about me',
     bullets: [
-      'Developed an AI-based personal profile that answers questions about me using FastAPI APIs and a React front-end, with OLLAMA-powered local AI.',
+      'Built a personal AI chatbot using FastAPI and React, powered by a locally-running Ollama model — answers questions about my skills, background, and personal details.',
+      'Handles complex and open-ended questions via the Ollama AI backend, running entirely locally on-device without any external API calls.',
+      'Implemented fast predefined responses for common queries (greetings, age, contacts) for instant replies without hitting the AI model.',
     ],
-    stack: ['Python', 'FastAPI', 'React', 'OLLAMA', 'REST API'],
+    stack: ['Python', 'FastAPI', 'React', 'Ollama', 'REST API', 'JavaScript'],
   },
 ]
 // Projects shown after clicking "See more projects"
 const EXTRA_PROJECTS = [
   {
-    name:     'Placeholder App Title',
+    name:     'Water Level & Temperature Monitoring',
     live:     null,
     demo:     null,
     year:     '2025',
-    subtitle: 'One-line description of what this project does',
+    subtitle: 'Real-time water level and temperature monitoring with IoT and desktop GUI',
     bullets: [
-      'Brief overview of the project — what problem it solves and who it is for.',
-      'Key technical highlight — architecture decision, interesting challenge, or notable feature.',
-      'Another bullet covering scope, scale, or outcome of the project.',
+      'Built a real-time monitoring system using a Raspberry Pi Pico W with an HCSR04 ultrasonic sensor and DS18B20 temperature sensor, transmitting live readings via TCP/IP over Wi-Fi.',
+      'Developed a desktop GUI in Python (Tkinter + Matplotlib) that receives sensor data, displays live graphs, and categorizes water level and temperature into alert states.',
+      'All readings are automatically logged into a MySQL database via a dedicated connector module, with critical alerts (very low/empty water) visually flagged on the graph.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
+    stack: ['Python', 'Tkinter', 'Matplotlib', 'MySQL', 'Raspberry Pi Pico W', 'MicroPython', 'TCP/IP'],
   },
   {
-    name:     'Placeholder App Again',
+    name:     'Payroll CLI',
     live:     null,
-    demo:     null,
+    demo:     'https://drive.google.com/file/d/1T2wwMvsthXSfjcYccfNE6KXKw8S-nATm/view',
     year:     '2024',
-    subtitle: 'One-line hahahahahahahaha of what this project does',
+    subtitle: 'Command-line Payroll & Employee Management System with PostgreSQL',
     bullets: [
-      'Brief ha of the project — what problem it solves and who it is for.',
-      'Key technical highlight — architecture decision, interesting challenge, or notable feature.',
-      'Another bullet covering scope, scale, or outcome of the project.',
+      'Built a menu-driven CLI system in Python for full employee CRUD — managing status, departments, and job assignments across a relational PostgreSQL schema.',
+      'Implemented payroll generation with overtime and deduction calculations, duplicate period prevention, and summary reports with total and average net pay.',
+      'Designed a normalized database schema across 5 tables (employees, departments, jobs, payroll_periods, payroll_records) with FK constraints and safe deletion handling.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript'],
+    stack: ['Python', 'PostgreSQL', 'asyncpg', 'SQL', 'CLI'],
   },
 ]
 const EXPERIENCE = [
   {
-    role: 'Software Developer',
+    role: 'Software Developer · Capstone Project',
     org:  'BirdCare – Smart Cage for Optimal Environmental Management',
     date: 'Mar 2025 – Nov 2025',
     live: 'https://birdcares.online/',
     demo: 'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
     bullets: [
-      'Developed an installable mobile app (PWA) using React, connected to a FastAPI back-end with database-backed authentication and persistent data storage.',
-      'Integrated IoT devices with a Pi Pico W, transmitting real-time sensor data in JSON format to the back-end for monitoring.',
+      'Developed an installable mobile app (PWA) using React.js connected to a FastAPI back-end, enabling bird owners to monitor real-time sensor readings, receive threshold alerts, watch a live ESP32-CAM video feed, and access historical data logs.',
+      'Integrated a multi-sensor IoT network (BME680, SCD40, MQ135, PMS5003, JSN-SR04T ultrasonic) via a Raspberry Pi Pico W, transmitting environmental data — temperature, humidity, CO₂, NH₃, VOCs, particulate matter, food and water levels — to Firebase in real time.',
     ],
   },
 ]
