@@ -56,12 +56,11 @@ const PROJECTS = [
   {
     name:     'Personal AI Profile Assistant',
     live:     null,
-    demo:     'https://www.youtube.com/watch?v=PLACEHOLDER',
+    demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view',
     year:     '2026',
     subtitle: 'AI-powered personal profile that answers questions about me',
     bullets: [
       'Developed an AI-based personal profile that answers questions about me using FastAPI APIs and a React front-end, with OLLAMA-powered local AI.',
-      '[Add more bullets — features, technical highlights, what you learned]',
     ],
     stack: ['Python', 'FastAPI', 'React', 'OLLAMA', 'REST API'],
   },
@@ -98,10 +97,10 @@ const EXTRA_PROJECTS = [
 const EXPERIENCE = [
   {
     role: 'Software Developer',
-    org:  'BirdCare – Mobile Monitoring Application (PWA)',
+    org:  'BirdCare – Smart Cage for Optimal Environmental Management',
     date: 'Mar 2025 – Nov 2025',
     live: 'https://birdcares.online/',
-    demo: 'https://www.youtube.com/watch?v=PLACEHOLDER',
+    demo: 'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
     bullets: [
       'Developed an installable mobile app (PWA) using React, connected to a FastAPI back-end with database-backed authentication and persistent data storage.',
       'Integrated IoT devices with a Pi Pico W, transmitting real-time sensor data in JSON format to the back-end for monitoring.',
@@ -110,12 +109,12 @@ const EXPERIENCE = [
 ]
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
-  { school: 'Arellano University',           degree: 'Senior High School · STEM Strand',              date: '2020 – 2022'    },
+  { school: 'Arellano University',           degree: 'STEM Strand',              date: '2020 – 2022'    },
 ]
 const CERTIFICATIONS = [
-  { name: 'IT Specialist – Python · Certiport CertNExus Pearson',                          year: '2026'   },
-  { name: 'Python Essentials 1 & 2 Certificate · Cisco NetAcad',                           year: '2024'   },
-  { name: 'Seminar: Digital Fabric — AI Imperatives and Risk, and Multimedia Augmentation', year: '[Year]' },
+  { name: 'IT Specialist – Python · Certiport', year: '2026', images: ['certs/cert1.webp'] },
+  { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention', year: '2025', images: ['certs/cert2.webp'] },
+  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad ', year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
 ]
 // ── ICONS ─────────────────────────────────────────────────────────────────────
 const IconExternal = () => (
@@ -388,13 +387,63 @@ function Education({ onHover }) {
   )
 }
 function Certifications({ onHover }) {
+  const [imgIdx, setImgIdx] = useState(null)
+
+  // Flatten all images into one array
+  const allImgs = CERTIFICATIONS.flatMap(c =>
+    Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
+  )
+
+  const handleKey = React.useCallback(e => {
+    if (imgIdx === null) return
+    if (e.key === 'ArrowRight') setImgIdx(i => (i + 1) % allImgs.length)
+    if (e.key === 'ArrowLeft')  setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)
+    if (e.key === 'Escape')     setImgIdx(null)
+  }, [imgIdx, allImgs.length])
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [handleKey])
+
+  const openCert = (c) => {
+    const firstImg = Array.isArray(c.images) ? c.images[0] : c.images
+    const idx = allImgs.indexOf(firstImg)
+    if (idx !== -1) setImgIdx(idx)
+  }
+
   return (
     <S id="certifications" onHover={onHover}>
+      {imgIdx !== null && (
+        <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
+          <div className="cert-lightbox-inner" onClick={e => e.stopPropagation()}>
+            <img
+              src={allImgs[imgIdx]}
+              alt="Certificate"
+              className="cert-lightbox-img"
+            />
+            <button
+              className="cert-lightbox-btn cert-lightbox-btn--prev"
+              onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}
+            >‹</button>
+            <button
+              className="cert-lightbox-btn cert-lightbox-btn--next"
+              onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}
+            >›</button>
+            <p className="cert-lightbox-counter">{imgIdx + 1} / {allImgs.length}</p>
+          </div>
+        </div>
+      )}
       <div className="container">
         <p className="section-label">Certifications &amp; Training</p>
         <div className="cert-list">
           {CERTIFICATIONS.map(c => (
-            <div key={c.name} className="cert-item">
+            <div
+              key={c.name}
+              className={`cert-item ${c.images ? 'cert-item--clickable' : ''}`}
+              onClick={() => c.images && openCert(c)}
+              style={{ cursor: c.images ? 'pointer' : 'default' }}
+            >
               <div className="cert-dot" />
               <div>
                 <p className="cert-name">{c.name}</p>
