@@ -72,7 +72,7 @@ const EXTRA_PROJECTS = [
   {
     name:     'Water Level & Temperature Monitoring',
     live:     null,
-    demo:     null,
+    demo:     'https://drive.google.com/file/d/1YUDYgXpGBsNw0J_L0D35D3lgeAxLEUCc/view?usp=sharing',
     year:     '2025',
     subtitle: 'Real-time water level and temperature monitoring with IoT and desktop GUI',
     bullets: [
