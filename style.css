@@ -13,7 +13,7 @@
   --tag-bg:     #eef2f8;
   --tag-fg:     #1e3a5f;
   --radius:     8px;
-  --max:        780px;
+  --max:        900px;
 }
 
 html { scroll-behavior: smooth; }
@@ -209,7 +209,7 @@ nav {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 36px;
   margin-bottom: 20px;
 }
 .project-card:last-child { margin-bottom: 0; }

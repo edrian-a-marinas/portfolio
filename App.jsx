@@ -40,7 +40,7 @@ const PROJECTS = [
   {
     name:     'TransacScope',
     live:     'https://transacscope.vercel.app',
-    demo:     null,
+    demo:     'https://drive.google.com/drive/folders/1u7WnkaLEA_4eJaf3D4nfk8o-e--OSsNe?usp=sharing',
     year:     '2026',
     subtitle: 'Role-Based Business Finance & Transaction Management System',
     bullets: [
@@ -100,6 +100,7 @@ const EXPERIENCE = [
     role: 'Software Developer',
     org:  'BirdCare – Mobile Monitoring Application (PWA)',
     date: 'Mar 2025 – Nov 2025',
+    live: 'https://birdcares.online/',
     demo: 'https://www.youtube.com/watch?v=PLACEHOLDER',
     bullets: [
       'Developed an installable mobile app (PWA) using React, connected to a FastAPI back-end with database-backed authentication and persistent data storage.',
@@ -344,10 +345,14 @@ function Experience({ onHover }) {
             <div className="project-top">
               <div>
                 <p className="exp-role">{e.role}</p>
-                <p className="exp-org">{e.org}</p>
+                <p className="exp-org">{e.org} · <span className="exp-date">{e.date}</span></p>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px', flexShrink: 0 }}>
-                <span className="exp-date">{e.date}</span>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {e.live && (
+                  <a className="project-live" href={e.live} target="_blank" rel="noopener noreferrer">
+                    <IconExternal /> Live Demo
+                  </a>
+                )}
                 {e.demo && (
                   <a className="project-demo" href={e.demo} target="_blank" rel="noopener noreferrer">
                     <IconVideo /> Demo Vid
