@@ -260,3 +260,21 @@ function useMobileScrollReveal() {
     return () => observer.disconnect()
   }, [])
 }
+
+function useDesktopScrollReveal() {
+  React.useEffect(() => {
+    if (window.innerWidth <= 600) return
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('desktop-reveal--visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.08 })
+
+    document.querySelectorAll('.desktop-reveal').forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+}

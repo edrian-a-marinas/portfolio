@@ -118,11 +118,11 @@ const EDUCATION = [
   { school: 'Arellano University',           degree: 'STEM Strand',                                  date: '2020 – 2022'    },
 ]
 const CERTIFICATIONS = [
-  { name: 'IT Specialist – Python · Certiport Pearson',                                                                      year: '2026', images: ['certs/cert1.webp'] },
-  { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention',     year: '2025', images: ['certs/cert2.webp'] },
-  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad',                                                                  year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
-  { name: 'Backend & Frontend Web Development · Udemy',                                                                      year: '2024', images: 'certs/cert4.webp' },
-  { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course',                                      year: '2025', images: 'certs/cert5.webp' },
+  { name: 'IT Specialist – Python · Certiport Pearson',                                                                   year: '2026', images: ['certs/cert1.webp'] },
+  { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention',  year: '2025', images: ['certs/cert2.webp'] },
+  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad',                                                               year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
+  { name: 'Backend & Frontend Web Development · Udemy',                                                                   year: '2024', images: 'certs/cert4.webp' },
+  { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course',                                   year: '2025', images: 'certs/cert5.webp' },
 ]
 // ── ICONS ─────────────────────────────────────────────────────────────────────
 const IconExternal = () => (
@@ -238,16 +238,16 @@ function Hero({ onPhotoClick, onHover }) {
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
-            <h1 className="hero-name reveal">Edrian Aldrin C. Mariñas</h1>
-            <p className="hero-title reveal">Software Developer · Metro Manila, PH</p>
-            <p className="hero-bio reveal">
+            <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
+            <p className="hero-title">Software Developer · Metro Manila, PH</p>
+            <p className="hero-bio">
               Experienced in building APIs using Python and FastAPI, working with databases
               PostgreSQL and MySQL, and integrating React frontends with backend services.
               Focused on end-to-end data integrity — from database constraints and schema
               validation to runtime type safety — to catch errors at every layer before
               they reach production.
             </p>
-            <div className="hero-contacts reveal">
+            <div className="hero-contacts">
               {CONTACTS.map(c => (
                 <a
                   key={c.label}
@@ -269,7 +269,7 @@ function Hero({ onPhotoClick, onHover }) {
               </a>
             </div>
           </div>
-          <div className="hero-photo-wrap reveal" onClick={onPhotoClick} title="Click to zoom">
+          <div className="hero-photo-wrap" onClick={onPhotoClick} title="Click to zoom">
             <img src="Edrian2x2.jpg" alt="Edrian Mariñas" className="hero-photo" />
           </div>
         </div>
@@ -281,8 +281,8 @@ function Skills({ onHover }) {
   return (
     <S id="skills" onHover={onHover}>
       <div className="container">
-        <p className="section-label reveal">Skills</p>
-        <div className="skills-grid reveal">
+        <p className="section-label">Skills</p>
+        <div className="skills-grid desktop-reveal">
           {SKILLS.map(group => (
             <React.Fragment key={group.category}>
               <span className="skill-cat">{group.category}</span>
@@ -298,7 +298,7 @@ function Skills({ onHover }) {
 }
 function ProjectCard({ p }) {
   return (
-    <div className="project-card">
+    <div className="project-card desktop-reveal">
       <div className="project-top">
         <span className="project-name">{p.name}</span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -387,7 +387,7 @@ function Experience({ onHover }) {
       <div className="container">
         <p className="section-label">Experience</p>
         {EXPERIENCE.map(e => (
-          <div key={e.role + e.org} className="project-card" style={{ marginBottom: '20px' }}>
+          <div key={e.role + e.org} className="project-card desktop-reveal" style={{ marginBottom: '20px' }}>
             <div className="project-top">
               <div>
                 <p className="exp-role">{e.role}</p>
@@ -419,9 +419,9 @@ function Education({ onHover }) {
   return (
     <S id="education" onHover={onHover}>
       <div className="container">
-        <p className="section-label reveal">Education</p>
+        <p className="section-label">Education</p>
         {EDUCATION.map(e => (
-          <div key={e.school} className="edu-item reveal">
+          <div key={e.school} className="edu-item desktop-reveal">
             <div>
               <p className="edu-school">{e.school}</p>
               <p className="edu-degree">{e.degree}</p>
@@ -466,8 +466,8 @@ function Certifications({ onHover }) {
         </div>
       )}
       <div className="container">
-        <p className="section-label reveal">Certifications &amp; Training</p>
-        <div className="cert-list reveal">
+        <p className="section-label">Certifications &amp; Training</p>
+        <div className="cert-list desktop-reveal">
           {CERTIFICATIONS.map(c => (
             <div
               key={c.name}
@@ -515,6 +515,7 @@ function App() {
   const [hoveredSection, setHoveredSection] = useState(null)
   const [lightbox, setLightbox] = useState(false)
   useMobileScrollReveal()
+  useDesktopScrollReveal()
   return (
     <>
       {lightbox && (
