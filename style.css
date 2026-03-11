@@ -166,7 +166,8 @@ nav {
 .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 .contact-pill--resume {
-  color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent); 
 }
 .contact-pill--resume:hover {
   background: var(--navy-light);
@@ -325,15 +326,6 @@ nav {
   transition: opacity 0.15s;
 }
 .project-github:hover { opacity: 0.75; }
-
-.contact-pill--resume {
-  color: var(--accent);
-}
-.contact-pill--resume:hover {
-  background: var(--navy-light);
-  border-color: var(--navy-light);
-  color: white;
-}
 
 /* ── Extra Projects (expandable) ── */
 /* Paste these rules at the bottom of your style.css */
