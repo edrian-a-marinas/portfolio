@@ -34,7 +34,7 @@ const SKILLS = [
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling'] },
   { category: 'Front-end', tags: ['TypeScript', 'React', 'Zod', 'Vite', 'JavaScript', 'HTML/CSS', 'Tailwind'] },
   { category: 'Tools',     tags: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts', tags: ['Role-Based Access Control', 'Authentication (JWT)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers'] },
+  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers'] },
 ]
 const PROJECTS = [
   {
@@ -115,14 +115,14 @@ const EXPERIENCE = [
 ]
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
-  { school: 'Arellano University',           degree: 'STEM Strand',              date: '2020 – 2022'    },
+  { school: 'Arellano University',           degree: 'STEM Strand',                                  date: '2020 – 2022'    },
 ]
 const CERTIFICATIONS = [
-  { name: 'IT Specialist – Python · Certiport Pearson', year: '2026', images: ['certs/cert1.webp'] },
-  { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention', year: '2025', images: ['certs/cert2.webp'] },
-  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad', year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
-  { name: 'Backend & Frontend Web Development · Udemy', year: '2024', images: 'certs/cert4.webp' },
-  { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course', year: '2025', images: 'certs/cert5.webp' },
+  { name: 'IT Specialist – Python · Certiport Pearson',                                                                      year: '2026', images: ['certs/cert1.webp'] },
+  { name: 'Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention',     year: '2025', images: ['certs/cert2.webp'] },
+  { name: 'Python Essentials 1 & 2 Course · Cisco NetAcad',                                                                  year: '2024', images: ['certs/cert3a.webp', 'certs/cert3b.webp'] },
+  { name: 'Backend & Frontend Web Development · Udemy',                                                                      year: '2024', images: 'certs/cert4.webp' },
+  { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course',                                      year: '2025', images: 'certs/cert5.webp' },
 ]
 // ── ICONS ─────────────────────────────────────────────────────────────────────
 const IconExternal = () => (
@@ -183,6 +183,12 @@ function Lightbox({ src, alt, onClose }) {
 }
 // ── NAV ───────────────────────────────────────────────────────────────────────
 function Nav({ hoveredSection }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
   const scrollTo = (e, href) => {
     e.preventDefault()
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -190,7 +196,9 @@ function Nav({ hoveredSection }) {
   return (
     <nav>
       <div className="nav-inner">
-        <a className="nav-name" href="#hero" onClick={e => scrollTo(e, '#hero')}>Edrian Mariñas</a>
+        <a className="nav-name" href="#hero" onClick={e => scrollTo(e, '#hero')}>
+          {isMobile ? 'Edrian' : 'Edrian Mariñas'}
+        </a>
         <ul className="nav-links">
           {NAV_LINKS.map(link => {
             const id = link.href.slice(1)
@@ -230,16 +238,16 @@ function Hero({ onPhotoClick, onHover }) {
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
-            <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
-            <p className="hero-title">Software Developer · Metro Manila, PH</p>
-            <p className="hero-bio">
+            <h1 className="hero-name reveal">Edrian Aldrin C. Mariñas</h1>
+            <p className="hero-title reveal">Software Developer · Metro Manila, PH</p>
+            <p className="hero-bio reveal">
               Experienced in building APIs using Python and FastAPI, working with databases
               PostgreSQL and MySQL, and integrating React frontends with backend services.
               Focused on end-to-end data integrity — from database constraints and schema
               validation to runtime type safety — to catch errors at every layer before
               they reach production.
             </p>
-            <div className="hero-contacts">
+            <div className="hero-contacts reveal">
               {CONTACTS.map(c => (
                 <a
                   key={c.label}
@@ -261,7 +269,7 @@ function Hero({ onPhotoClick, onHover }) {
               </a>
             </div>
           </div>
-          <div className="hero-photo-wrap" onClick={onPhotoClick} title="Click to zoom">
+          <div className="hero-photo-wrap reveal" onClick={onPhotoClick} title="Click to zoom">
             <img src="Edrian2x2.jpg" alt="Edrian Mariñas" className="hero-photo" />
           </div>
         </div>
@@ -273,8 +281,8 @@ function Skills({ onHover }) {
   return (
     <S id="skills" onHover={onHover}>
       <div className="container">
-        <p className="section-label">Skills</p>
-        <div className="skills-grid">
+        <p className="section-label reveal">Skills</p>
+        <div className="skills-grid reveal">
           {SKILLS.map(group => (
             <React.Fragment key={group.category}>
               <span className="skill-cat">{group.category}</span>
@@ -325,6 +333,16 @@ function ProjectCard({ p }) {
 }
 function Projects({ onHover }) {
   const [expanded, setExpanded] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  const allProjects = [...PROJECTS, ...EXTRA_PROJECTS]
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  if (isMobile) return (
+    <MobileProjects onHover={onHover} allProjects={allProjects} S={S} />
+  )
   return (
     <S id="projects" onHover={onHover}>
       <div className="container">
@@ -357,6 +375,13 @@ function Projects({ onHover }) {
   )
 }
 function Experience({ onHover }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  if (isMobile) return <MobileExperience onHover={onHover} S={S} />
   return (
     <S id="experience" onHover={onHover}>
       <div className="container">
@@ -394,9 +419,9 @@ function Education({ onHover }) {
   return (
     <S id="education" onHover={onHover}>
       <div className="container">
-        <p className="section-label">Education</p>
+        <p className="section-label reveal">Education</p>
         {EDUCATION.map(e => (
-          <div key={e.school} className="edu-item">
+          <div key={e.school} className="edu-item reveal">
             <div>
               <p className="edu-school">{e.school}</p>
               <p className="edu-degree">{e.degree}</p>
@@ -441,8 +466,8 @@ function Certifications({ onHover }) {
         </div>
       )}
       <div className="container">
-        <p className="section-label">Certifications &amp; Training</p>
-        <div className="cert-list">
+        <p className="section-label reveal">Certifications &amp; Training</p>
+        <div className="cert-list reveal">
           {CERTIFICATIONS.map(c => (
             <div
               key={c.name}
@@ -489,6 +514,7 @@ function Footer() {
 function App() {
   const [hoveredSection, setHoveredSection] = useState(null)
   const [lightbox, setLightbox] = useState(false)
+  useMobileScrollReveal()
   return (
     <>
       {lightbox && (
