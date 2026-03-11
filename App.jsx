@@ -34,7 +34,7 @@ const SKILLS = [
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling'] },
   { category: 'Front-end', tags: ['TypeScript', 'React', 'Zod', 'Vite', 'JavaScript', 'HTML/CSS', 'Tailwind'] },
   { category: 'Tools',     tags: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts', tags: ['Role-Based Access Control', 'Authentication (JWT)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'HTTP', 'Routing'] },
+  { category: 'Concepts', tags: ['Role-Based Access Control', 'Authentication (JWT)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers'] },
 ]
 const PROJECTS = [
   {
@@ -51,6 +51,7 @@ const PROJECTS = [
       'Enforced password security — 90-day expiry with a forced change gate, 7-day reuse prevention via password history, and a protected demo account with role-locked access.',
       '13 modal components handling the full user interaction layer — including multi-step flows, role-gated views, and real-time notification deep-linking.',
       'End-to-end type safety and data validation via Pydantic (backend) and Zod (frontend) — database constraints: CHECK, FK integrity, ENUMs, and partial unique indexes.',
+      'Production-hardened backend — CORS restrictions, trusted host validation, security headers (X-Frame-Options, HSTS, CSP), and environment-based debug gating.',
     ],
     stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Vite', 'Zod', 'Pydantic'],
   },
