@@ -625,3 +625,25 @@ a.nav-name:hover { color: var(--accent); }
     transition: opacity 1.2s ease, transform 1.2s ease;
   }
 }
+
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.back-to-top:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
