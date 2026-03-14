@@ -41,7 +41,7 @@ const PROJECTS = [
     name:     'TransacScope',
     live:     'https://transacscope.vercel.app',
     demo:     'https://drive.google.com/file/d/1fXCICTBrgaCmMWBpuK1JLUi5SkQ1x5tR/view?usp=sharing',
-    github:   null,
+    github:   'https://github.com/edrian-a-marinas/TransacScope',
     year:     '2026',
     subtitle: 'Role-Based Business Finance & Transaction Management System',
     bullets: [
