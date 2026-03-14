@@ -53,7 +53,7 @@ const PROJECTS = [
       'End-to-end type safety and data validation via Pydantic (backend) and Zod (frontend) — database constraints: CHECK, FK integrity, ENUMs, and partial unique indexes.',
       'Production-hardened backend — CORS restrictions, trusted host validation, security headers (X-Frame-Options, HSTS, CSP), and environment-based debug gating.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Axios', 'Vite', 'Zod', 'Pydantic'],
+    stack: ['Python', 'FastAPI', 'Pydantic', 'PostgreSQL', 'React', 'TypeScript', 'Zod', 'Axios', 'Vite'],
   },
   {
     name:     'Personal AI Profile Assistant',
