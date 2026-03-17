@@ -647,3 +647,10 @@ a.nav-name:hover { color: var(--accent); }
   border-color: var(--accent);
   color: var(--accent);
 }
+
+
+.cert-item--clickable .cert-name .word-reveal {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent);
+}

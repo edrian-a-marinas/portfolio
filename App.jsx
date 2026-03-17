@@ -114,7 +114,7 @@ const EXPERIENCE = [
   },
 ]
 const EDUCATION = [
-  { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – Present' },
+  { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – 2026' },
   { school: 'Arellano University',           degree: 'STEM Strand',                                  date: '2020 – 2022'    },
 ]
 const CERTIFICATIONS = [
@@ -417,6 +417,13 @@ function Experience({ onHover }) {
   )
 }
 function Education({ onHover }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  if (isMobile) return <MobileEducation onHover={onHover} S={S} />
   return (
     <S id="education" onHover={onHover}>
       <div className="container">
@@ -437,9 +444,15 @@ function Education({ onHover }) {
 function Certifications({ onHover }) {
   const [imgIdx, setImgIdx] = useState(null)
   const [touchStartX, setTouchStartX] = useState(null)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
   const allImgs = CERTIFICATIONS.flatMap(c =>
     Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
   )
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
   const handleKey = React.useCallback(e => {
     if (imgIdx === null) return
     if (e.key === 'ArrowRight') setImgIdx(i => (i + 1) % allImgs.length)
@@ -455,6 +468,14 @@ function Certifications({ onHover }) {
     const idx = allImgs.indexOf(firstImg)
     if (idx !== -1) setImgIdx(idx)
   }
+  if (isMobile) return (
+    <MobileCertifications
+      onHover={onHover} S={S}
+      imgIdx={imgIdx} setImgIdx={setImgIdx}
+      allImgs={allImgs} openCert={openCert}
+      touchStartX={touchStartX} setTouchStartX={setTouchStartX}
+    />
+  )
   return (
     <S id="certifications" onHover={onHover}>
       {imgIdx !== null && (

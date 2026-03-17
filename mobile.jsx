@@ -1,12 +1,15 @@
 // mobile.jsx — Mobile-only components
 
+function truncateCertName(name, limit = 45) {
+  if (name.length <= limit) return name
+  return name.slice(0, limit).trimEnd() + '…'
+}
+
 function MobileProjectCard({ p }) {
   const [isExpanded, setIsExpanded] = React.useState(false)
   const CHAR_LIMIT = 300
-
   const fullText = p.bullets.join(' ')
   const needsTruncation = fullText.length > CHAR_LIMIT
-
   const visibleBullets = () => {
     if (isExpanded || !needsTruncation) return p.bullets
     let count = 0
@@ -22,7 +25,6 @@ function MobileProjectCard({ p }) {
     }
     return result
   }
-
   return (
     <div className="project-card">
       <div className="project-top">
@@ -77,7 +79,6 @@ function MobileProjects({ onHover, allProjects, S }) {
   const [carouselIdx, setCarouselIdx] = React.useState(0)
   const [animClass, setAnimClass]     = React.useState('')
   const [touchStart, setTouchStart]   = React.useState(null)
-
   const goTo = (nextIdx) => {
     if (nextIdx === carouselIdx) return
     const dir = nextIdx > carouselIdx ? 'carousel-slide-left' : 'carousel-slide-right'
@@ -87,7 +88,6 @@ function MobileProjects({ onHover, allProjects, S }) {
       setAnimClass('')
     }, 220)
   }
-
   const handleTouchStart = (e) => setTouchStart(e.touches[0].clientX)
   const handleTouchEnd = (e) => {
     if (touchStart === null) return
@@ -96,7 +96,6 @@ function MobileProjects({ onHover, allProjects, S }) {
     if (diff < -40) goTo(Math.max(carouselIdx - 1, 0))
     setTouchStart(null)
   }
-
   return (
     <S id="projects" onHover={onHover}>
       <div className="container">
@@ -138,7 +137,6 @@ function MobileProjects({ onHover, allProjects, S }) {
 
 function MobileExperience({ onHover, S }) {
   const CHAR_LIMIT = 300
-
   return (
     <S id="experience" onHover={onHover}>
       <div className="container">
@@ -156,7 +154,6 @@ function MobileExperience({ onHover, S }) {
 function MobileExpCard({ e, needsTruncation }) {
   const [isExpanded, setIsExpanded] = React.useState(false)
   const CHAR_LIMIT = 300
-
   const visibleBullets = () => {
     if (isExpanded || !needsTruncation) return e.bullets
     let count = 0
@@ -172,7 +169,6 @@ function MobileExpCard({ e, needsTruncation }) {
     }
     return result
   }
-
   return (
     <div className="project-card" style={{ marginBottom: '20px' }}>
       <div className="project-top">
@@ -215,11 +211,58 @@ function MobileExpCard({ e, needsTruncation }) {
   )
 }
 
+function MobileCertifications({ onHover, S, imgIdx, setImgIdx, allImgs, openCert, touchStartX, setTouchStartX }) {
+  return (
+    <React.Fragment>
+      {imgIdx !== null && (
+        <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
+          <div
+            className="cert-lightbox-inner"
+            onClick={e => e.stopPropagation()}
+            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={e => {
+              if (touchStartX === null) return
+              const diff = touchStartX - e.changedTouches[0].clientX
+              if (diff > 40)  setImgIdx(i => (i + 1) % allImgs.length)
+              if (diff < -40) setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)
+              setTouchStartX(null)
+            }}
+          >
+            <img src={allImgs[imgIdx]} alt="Certificate" className="cert-lightbox-img" />
+            <button className="cert-lightbox-btn cert-lightbox-btn--prev" onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}>‹</button>
+            <button className="cert-lightbox-btn cert-lightbox-btn--next" onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}>›</button>
+            <p className="cert-lightbox-counter">{imgIdx + 1} / {allImgs.length}</p>
+          </div>
+        </div>
+      )}
+      <S id="certifications" onHover={onHover}>
+        <div className="container">
+          <p className="section-label">Certifications &amp; Training</p>
+          <div className="cert-list">
+            {CERTIFICATIONS.map(c => (
+              <div
+                key={c.name}
+                className={`cert-item ${c.images ? 'cert-item--clickable' : ''}`}
+                onClick={() => c.images && openCert(c)}
+                style={{ cursor: c.images ? 'pointer' : 'default' }}
+              >
+                <div className="cert-dot" />
+                <div>
+                  <p className="cert-name">{truncateCertName(c.name)}</p>
+                  <p className="cert-year">{c.year}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </S>
+    </React.Fragment>
+  )
+}
+
 function useMobileScrollReveal() {
   React.useEffect(() => {
     if (window.innerWidth > 600) return
-
-    // Split every text node into word spans
     const wrap = (el) => {
       el.childNodes.forEach(node => {
         if (node.nodeType === 3 && node.textContent.trim()) {
@@ -238,11 +281,9 @@ function useMobileScrollReveal() {
         }
       })
     }
-
     document.querySelectorAll('p, li, h1, h2, span.skill-cat, span.tag, span.stack-tag, .edu-school, .edu-degree, .project-name, .project-subtitle, .exp-role, .exp-org, .cert-name').forEach(el => {
       wrap(el)
     })
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -251,12 +292,10 @@ function useMobileScrollReveal() {
         }
       })
     }, { threshold: 0.1 })
-
     document.querySelectorAll('.word-reveal').forEach((el, i) => {
       el.style.transitionDelay = `${(i % 20) * 18}ms`
       observer.observe(el)
     })
-
     return () => observer.disconnect()
   }, [])
 }
@@ -264,7 +303,6 @@ function useMobileScrollReveal() {
 function useDesktopScrollReveal() {
   React.useEffect(() => {
     if (window.innerWidth <= 600) return
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -273,8 +311,32 @@ function useDesktopScrollReveal() {
         }
       })
     }, { threshold: 0.08 })
-
     document.querySelectorAll('.desktop-reveal').forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [])
+}
+
+
+function abbreviateDegree(degree) {
+  return degree
+    .replace('Bachelor of Science', 'B.S.')
+}
+
+function MobileEducation({ onHover, S }) {
+  return (
+    <S id="education" onHover={onHover}>
+      <div className="container">
+        <p className="section-label">Education</p>
+        {EDUCATION.map(e => (
+          <div key={e.school} className="edu-item">
+            <div>
+              <p className="edu-school">{e.school}</p>
+              <p className="edu-degree">{abbreviateDegree(e.degree)}</p>
+            </div>
+            <span className="edu-date">{e.date}</span>
+          </div>
+        ))}
+      </div>
+    </S>
+  )
 }
