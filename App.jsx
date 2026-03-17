@@ -452,6 +452,7 @@ function Certifications({ onHover }) {
   const [imgIdx, setImgIdx] = useState(null)
   const [touchStartX, setTouchStartX] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  const [preview, setPreview] = useState(null) // { src, x, y }
   const allImgs = CERTIFICATIONS.flatMap(c =>
     Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
   )
@@ -475,6 +476,10 @@ function Certifications({ onHover }) {
     const idx = allImgs.indexOf(firstImg)
     if (idx !== -1) setImgIdx(idx)
   }
+  const handleCertMouseMove = (e, src) => {
+    setPreview({ src, x: e.clientX, y: e.clientY })
+  }
+  const handleCertMouseLeave = () => setPreview(null)
   if (isMobile) return (
     <MobileCertifications
       onHover={onHover} S={S}
@@ -485,6 +490,29 @@ function Certifications({ onHover }) {
   )
   return (
     <S id="certifications" onHover={onHover}>
+      {/* Floating preview */}
+      {preview && (
+        <div style={{
+          position: 'fixed',
+          left: preview.x + 18,
+          top: preview.y - 80,
+          zIndex: 998,
+          pointerEvents: 'none',
+          background: 'white',
+          border: '1px solid var(--border)',
+          borderRadius: '10px',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+          padding: '6px',
+          width: '220px',
+          transition: 'opacity 0.15s',
+        }}>
+          <img
+            src={preview.src}
+            alt="Certificate preview"
+            style={{ width: '100%', borderRadius: '6px', display: 'block' }}
+          />
+        </div>
+      )}
       {imgIdx !== null && (
         <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
           <div
@@ -509,20 +537,25 @@ function Certifications({ onHover }) {
       <div className="container">
         <p className="section-label">Certifications &amp; Training</p>
         <div className="cert-list desktop-reveal">
-          {CERTIFICATIONS.map(c => (
-            <div
-              key={c.name}
-              className={`cert-item ${c.images ? 'cert-item--clickable' : ''}`}
-              onClick={() => c.images && openCert(c)}
-              style={{ cursor: c.images ? 'pointer' : 'default' }}
-            >
-              <div className="cert-dot" />
-              <div>
-                <p className="cert-name">{c.name}</p>
-                <p className="cert-year">{c.year}</p>
+          {CERTIFICATIONS.map(c => {
+            const firstImg = Array.isArray(c.images) ? c.images[0] : c.images
+            return (
+              <div
+                key={c.name}
+                className={`cert-item ${c.images ? 'cert-item--clickable' : ''}`}
+                onClick={() => c.images && openCert(c)}
+                onMouseMove={c.images ? e => handleCertMouseMove(e, firstImg) : undefined}
+                onMouseLeave={c.images ? handleCertMouseLeave : undefined}
+                style={{ cursor: c.images ? 'pointer' : 'default' }}
+              >
+                <div className="cert-dot" />
+                <div>
+                  <p className="cert-name">{c.name}</p>
+                  <p className="cert-year">{c.year}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </S>
