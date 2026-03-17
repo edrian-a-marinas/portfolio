@@ -435,6 +435,7 @@ function Education({ onHover }) {
 }
 function Certifications({ onHover }) {
   const [imgIdx, setImgIdx] = useState(null)
+  const [touchStartX, setTouchStartX] = useState(null)
   const allImgs = CERTIFICATIONS.flatMap(c =>
     Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
   )
@@ -457,7 +458,18 @@ function Certifications({ onHover }) {
     <S id="certifications" onHover={onHover}>
       {imgIdx !== null && (
         <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
-          <div className="cert-lightbox-inner" onClick={e => e.stopPropagation()}>
+          <div 
+            className="cert-lightbox-inner" 
+            onClick={e => e.stopPropagation()}
+            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}  
+            onTouchEnd={e => {                                          
+              if (touchStartX === null) return
+              const diff = touchStartX - e.changedTouches[0].clientX
+              if (diff > 40)  setImgIdx(i => (i + 1) % allImgs.length)
+              if (diff < -40) setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)
+              setTouchStartX(null)
+            }}                                         
+            >
             <img src={allImgs[imgIdx]} alt="Certificate" className="cert-lightbox-img" />
             <button className="cert-lightbox-btn cert-lightbox-btn--prev" onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}>‹</button>
             <button className="cert-lightbox-btn cert-lightbox-btn--next" onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}>›</button>
