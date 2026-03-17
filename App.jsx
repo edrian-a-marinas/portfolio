@@ -56,18 +56,17 @@ const PROJECTS = [
     stack: ['Python', 'FastAPI', 'Pydantic', 'PostgreSQL', 'React', 'TypeScript', 'Zod', 'Axios', 'Vite'],
   },
   {
-    name:     'Personal AI Profile Assistant',
-    live:     null,
+    name:     'Edrian AI',
+    live:     'https://edrian-ai-profile-assistant.vercel.app',
     demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/Personal-AI-Profile-Assistant',
     year:     '2026',
     subtitle: 'AI-powered personal chatbot that answers questions about me',
     bullets: [
-      'Built a personal AI chatbot using FastAPI and React, powered by a locally-running Ollama model — answers questions about my skills, background, and personal details.',
-      'Handles complex and open-ended questions via the Ollama AI backend, running entirely locally on-device without any external API calls.',
-      'Implemented fast predefined responses for common queries (greetings, age, contacts) for instant replies without hitting the AI model.',
+      'Built a personal AI chatbot using FastAPI and React, powered by Groq AI — answers questions about my skills, background, projects, and personal details.',
+      'Implemented keyword-based fast responses for common queries (greetings, date, jokes) for instant replies, with Groq AI as the fallback for open-ended and complex questions.',
     ],
-    stack: ['Python', 'FastAPI', 'React', 'Ollama', 'REST API', 'JavaScript'],
+    stack: ['Python', 'FastAPI', 'React', 'Groq', 'REST API', 'JavaScript', 'Vercel'],
   },
 ]
 const EXTRA_PROJECTS = [
