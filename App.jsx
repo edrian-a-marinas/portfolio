@@ -304,46 +304,26 @@ function Skills({ onHover }) {
     </S>
   )
 }
-function ProjectCard({ p }) {
-  const [preview, setPreview] = useState(null)
+// ── PROJECT CARD ──────────────────────────────────────────────────────────────
+function ProjectCard({ p, onPreviewChange }) {
   const PROJECT_PREVIEWS = {
     'TransacScope':                  'projects/TransacScope.webp',
     'Personal AI Profile Assistant': 'projects/PersonalAI.webp',
   }
   const previewSrc = PROJECT_PREVIEWS[p.name] || null
-  const handleMouseMove = (e) => {
+
+  const handleMouseMove = (e, side) => {
     if (!previewSrc) return
-    setPreview({ x: e.clientX, y: e.clientY })
+    onPreviewChange({ src: previewSrc, x: e.clientX, y: e.clientY, side })
   }
-  const handleMouseLeave = () => setPreview(null)
+  const handleMouseLeave = () => onPreviewChange(null)
+
   return (
     <div className="project-card desktop-reveal">
-      {preview && (
-  <div style={{
-    position: 'fixed',
-    left: preview.x - 500,
-    top: preview.y - 300,
-    transform: 'translateY(-100%)',
-    zIndex: 998,
-    pointerEvents: 'none',
-    background: 'white',
-    border: '1px solid var(--border)',
-    borderRadius: '10px',
-    boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
-    padding: '6px',
-    width: '500px',
-  }}>
-    <img
-      src={previewSrc}
-      alt={`${p.name} preview`}
-      style={{ width: '100%', borderRadius: '6px', display: 'block' }}
-    />
-  </div>
-)}
       <div className="project-top">
         <span
           className="project-name"
-          onMouseMove={previewSrc ? handleMouseMove : undefined}
+          onMouseMove={previewSrc ? e => handleMouseMove(e, 'left') : undefined}
           onMouseLeave={previewSrc ? handleMouseLeave : undefined}
           style={{ cursor: previewSrc ? 'default' : undefined }}
         >
@@ -356,7 +336,7 @@ function ProjectCard({ p }) {
               href={p.live}
               target="_blank"
               rel="noopener noreferrer"
-              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseMove={previewSrc ? e => handleMouseMove(e, 'right') : undefined}
               onMouseLeave={previewSrc ? handleMouseLeave : undefined}
             >
               <IconExternal /> Live Demo
@@ -368,7 +348,7 @@ function ProjectCard({ p }) {
               href={p.demo}
               target="_blank"
               rel="noopener noreferrer"
-              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseMove={previewSrc ? e => handleMouseMove(e, 'right') : undefined}
               onMouseLeave={previewSrc ? handleMouseLeave : undefined}
             >
               <IconVideo /> Demo Vid
@@ -380,7 +360,7 @@ function ProjectCard({ p }) {
               href={p.github}
               target="_blank"
               rel="noopener noreferrer"
-              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseMove={previewSrc ? e => handleMouseMove(e, 'right') : undefined}
               onMouseLeave={previewSrc ? handleMouseLeave : undefined}
             >
               <IconGitHub /> GitHub
@@ -404,6 +384,7 @@ function ProjectCard({ p }) {
 function Projects({ onHover }) {
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  const [preview, setPreview] = useState(null)
   const allProjects = [...PROJECTS, ...EXTRA_PROJECTS]
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 600)
@@ -415,14 +396,37 @@ function Projects({ onHover }) {
   )
   return (
     <S id="projects" onHover={onHover}>
+      {preview && (
+        <div style={{
+          position: 'fixed',
+          left: preview.side === 'left'
+            ? preview.x - 520
+            : preview.x + 20,
+          top: Math.max(10, preview.y - 360),
+          zIndex: 9999,
+          pointerEvents: 'none',
+          background: 'white',
+          border: '1px solid var(--border)',
+          borderRadius: '10px',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+          padding: '6px',
+          width: '500px',
+        }}>
+          <img
+            src={preview.src}
+            alt={`${preview.src} preview`}
+            style={{ width: '100%', borderRadius: '6px', display: 'block' }}
+          />
+        </div>
+      )}
       <div className="container">
         <p className="section-label">Projects</p>
-        {PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
+        {PROJECTS.map(p => <ProjectCard key={p.name} p={p} onPreviewChange={setPreview} />)}
         {EXTRA_PROJECTS.length > 0 && (
           <>
             <div className={`extra-projects ${expanded ? 'extra-projects--open' : ''}`}>
               <div className="extra-projects-inner">
-                {EXTRA_PROJECTS.map(p => <ProjectCard key={p.name} p={p} />)}
+                {EXTRA_PROJECTS.map(p => <ProjectCard key={p.name} p={p} onPreviewChange={setPreview} />)}
               </div>
             </div>
             <button
@@ -444,6 +448,7 @@ function Projects({ onHover }) {
     </S>
   )
 }
+// ── EXPERIENCE ────────────────────────────────────────────────────────────────
 function Experience({ onHover }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
   useEffect(() => {
@@ -485,6 +490,7 @@ function Experience({ onHover }) {
     </S>
   )
 }
+// ── EDUCATION ─────────────────────────────────────────────────────────────────
 function Education({ onHover }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
   useEffect(() => {
@@ -510,11 +516,12 @@ function Education({ onHover }) {
     </S>
   )
 }
+// ── CERTIFICATIONS ────────────────────────────────────────────────────────────
 function Certifications({ onHover }) {
   const [imgIdx, setImgIdx] = useState(null)
   const [touchStartX, setTouchStartX] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
-  const [preview, setPreview] = useState(null) // { src, x, y }
+  const [preview, setPreview] = useState(null)
   const allImgs = CERTIFICATIONS.flatMap(c =>
     Array.isArray(c.images) ? c.images : c.images ? [c.images] : []
   )
@@ -552,12 +559,17 @@ function Certifications({ onHover }) {
   )
   return (
     <S id="certifications" onHover={onHover}>
-      {/* Floating preview */}
       {preview && (
         <div style={{
           position: 'fixed',
           left: preview.x + 18,
-          top: preview.y - 80,
+          top: (() => {
+            const previewHeight = 340; // approximate rendered height of the 500px-wide preview
+            const spaceBelow = window.innerHeight - preview.y;
+            return spaceBelow < previewHeight
+              ? preview.y - previewHeight + 20   // flip above cursor
+              : preview.y - 80;                  // default: slightly above cursor
+          })(),
           zIndex: 998,
           pointerEvents: 'none',
           background: 'white',
@@ -603,18 +615,18 @@ function Certifications({ onHover }) {
             const firstImg = Array.isArray(c.images) ? c.images[0] : c.images
             return (
               <div key={c.name} className="cert-item">
-  <div className="cert-dot" />
-  <div
-    className={c.images ? 'cert-item--clickable' : ''}
-    onClick={() => c.images && openCert(c)}
-    onMouseMove={c.images ? e => handleCertMouseMove(e, firstImg) : undefined}
-    onMouseLeave={c.images ? handleCertMouseLeave : undefined}
-    style={{ cursor: c.images ? 'pointer' : 'default' }}
-  >
-    <p className="cert-name">{c.name}</p>
-    <p className="cert-year">{c.year}</p>
-  </div>
-</div>
+                <div className="cert-dot" />
+                <div
+                  className={c.images ? 'cert-item--clickable' : ''}
+                  onClick={() => c.images && openCert(c)}
+                  onMouseMove={c.images ? e => handleCertMouseMove(e, firstImg) : undefined}
+                  onMouseLeave={c.images ? handleCertMouseLeave : undefined}
+                  style={{ cursor: c.images ? 'pointer' : 'default' }}
+                >
+                  <p className="cert-name">{c.name}</p>
+                  <p className="cert-year">{c.year}</p>
+                </div>
+              </div>
             )
           })}
         </div>
@@ -622,6 +634,7 @@ function Certifications({ onHover }) {
     </S>
   )
 }
+// ── FOOTER ────────────────────────────────────────────────────────────────────
 function Footer() {
   const footerContacts = CONTACTS.filter(c =>
     c.href.startsWith('mailto:') || c.label === 'LinkedIn'
@@ -660,7 +673,6 @@ function App() {
   useMobileScrollReveal()
   useDesktopScrollReveal()
 
-  // Mobile: highlight nav link based on which section is in view
   useEffect(() => {
     if (window.innerWidth > 600) return
     const ids = NAV_LINKS.map(l => l.href.slice(1))
