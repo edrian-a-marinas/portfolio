@@ -182,7 +182,7 @@ function Lightbox({ src, alt, onClose }) {
   )
 }
 // ── NAV ───────────────────────────────────────────────────────────────────────
-function Nav({ hoveredSection }) {
+function Nav({ hoveredSection, activeSection }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 600)
@@ -202,11 +202,12 @@ function Nav({ hoveredSection }) {
         <ul className="nav-links">
           {NAV_LINKS.map(link => {
             const id = link.href.slice(1)
+            const isActive = isMobile ? activeSection === id : hoveredSection === id
             return (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={hoveredSection === id ? 'active' : ''}
+                  className={isActive ? 'active' : ''}
                   onClick={e => scrollTo(e, link.href)}
                 >
                   {link.label}
@@ -458,18 +459,18 @@ function Certifications({ onHover }) {
     <S id="certifications" onHover={onHover}>
       {imgIdx !== null && (
         <div className="cert-lightbox-overlay" onClick={() => setImgIdx(null)}>
-          <div 
-            className="cert-lightbox-inner" 
+          <div
+            className="cert-lightbox-inner"
             onClick={e => e.stopPropagation()}
-            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}  
-            onTouchEnd={e => {                                          
+            onTouchStart={e => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={e => {
               if (touchStartX === null) return
               const diff = touchStartX - e.changedTouches[0].clientX
               if (diff > 40)  setImgIdx(i => (i + 1) % allImgs.length)
               if (diff < -40) setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)
               setTouchStartX(null)
-            }}                                         
-            >
+            }}
+          >
             <img src={allImgs[imgIdx]} alt="Certificate" className="cert-lightbox-img" />
             <button className="cert-lightbox-btn cert-lightbox-btn--prev" onClick={() => setImgIdx(i => (i - 1 + allImgs.length) % allImgs.length)}>‹</button>
             <button className="cert-lightbox-btn cert-lightbox-btn--next" onClick={() => setImgIdx(i => (i + 1) % allImgs.length)}>›</button>
@@ -532,9 +533,29 @@ function Footer() {
 // ── APP ───────────────────────────────────────────────────────────────────────
 function App() {
   const [hoveredSection, setHoveredSection] = useState(null)
+  const [activeSection, setActiveSection]   = useState(null)
   const [lightbox, setLightbox] = useState(false)
   useMobileScrollReveal()
   useDesktopScrollReveal()
+
+  // Mobile: highlight nav link based on which section is in view
+  useEffect(() => {
+    if (window.innerWidth > 600) return
+    const ids = NAV_LINKS.map(l => l.href.slice(1))
+    const observers = []
+    ids.forEach(id => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { threshold: 0.3 }
+      )
+      obs.observe(el)
+      observers.push(obs)
+    })
+    return () => observers.forEach(o => o.disconnect())
+  }, [])
+
   return (
     <>
       {lightbox && (
@@ -544,7 +565,7 @@ function App() {
           onClose={() => setLightbox(false)}
         />
       )}
-      <Nav hoveredSection={hoveredSection} />
+      <Nav hoveredSection={hoveredSection} activeSection={activeSection} />
       <Hero       onPhotoClick={() => setLightbox(true)} onHover={setHoveredSection} />
       <Skills     onHover={setHoveredSection} />
       <Projects   onHover={setHoveredSection} />
