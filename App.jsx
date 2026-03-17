@@ -565,7 +565,7 @@ function Certifications({ onHover }) {
           borderRadius: '10px',
           boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
           padding: '6px',
-          width: '220px',
+          width: '500px',
           transition: 'opacity 0.15s',
         }}>
           <img
@@ -602,20 +602,19 @@ function Certifications({ onHover }) {
           {CERTIFICATIONS.map(c => {
             const firstImg = Array.isArray(c.images) ? c.images[0] : c.images
             return (
-              <div
-                key={c.name}
-                className={`cert-item ${c.images ? 'cert-item--clickable' : ''}`}
-                onClick={() => c.images && openCert(c)}
-                onMouseMove={c.images ? e => handleCertMouseMove(e, firstImg) : undefined}
-                onMouseLeave={c.images ? handleCertMouseLeave : undefined}
-                style={{ cursor: c.images ? 'pointer' : 'default' }}
-              >
-                <div className="cert-dot" />
-                <div>
-                  <p className="cert-name">{c.name}</p>
-                  <p className="cert-year">{c.year}</p>
-                </div>
-              </div>
+              <div key={c.name} className="cert-item">
+  <div className="cert-dot" />
+  <div
+    className={c.images ? 'cert-item--clickable' : ''}
+    onClick={() => c.images && openCert(c)}
+    onMouseMove={c.images ? e => handleCertMouseMove(e, firstImg) : undefined}
+    onMouseLeave={c.images ? handleCertMouseLeave : undefined}
+    style={{ cursor: c.images ? 'pointer' : 'default' }}
+  >
+    <p className="cert-name">{c.name}</p>
+    <p className="cert-year">{c.year}</p>
+  </div>
+</div>
             )
           })}
         </div>
