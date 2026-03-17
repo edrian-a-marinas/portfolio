@@ -305,23 +305,84 @@ function Skills({ onHover }) {
   )
 }
 function ProjectCard({ p }) {
+  const [preview, setPreview] = useState(null)
+  const PROJECT_PREVIEWS = {
+    'TransacScope':                  'projects/TransacScope.webp',
+    'Personal AI Profile Assistant': 'projects/PersonalAI.webp',
+  }
+  const previewSrc = PROJECT_PREVIEWS[p.name] || null
+  const handleMouseMove = (e) => {
+    if (!previewSrc) return
+    setPreview({ x: e.clientX, y: e.clientY })
+  }
+  const handleMouseLeave = () => setPreview(null)
   return (
     <div className="project-card desktop-reveal">
+      {preview && (
+  <div style={{
+    position: 'fixed',
+    left: preview.x - 500,
+    top: preview.y - 300,
+    transform: 'translateY(-100%)',
+    zIndex: 998,
+    pointerEvents: 'none',
+    background: 'white',
+    border: '1px solid var(--border)',
+    borderRadius: '10px',
+    boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+    padding: '6px',
+    width: '500px',
+  }}>
+    <img
+      src={previewSrc}
+      alt={`${p.name} preview`}
+      style={{ width: '100%', borderRadius: '6px', display: 'block' }}
+    />
+  </div>
+)}
       <div className="project-top">
-        <span className="project-name">{p.name}</span>
+        <span
+          className="project-name"
+          onMouseMove={previewSrc ? handleMouseMove : undefined}
+          onMouseLeave={previewSrc ? handleMouseLeave : undefined}
+          style={{ cursor: previewSrc ? 'default' : undefined }}
+        >
+          {p.name}
+        </span>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           {p.live && (
-            <a className="project-live" href={p.live} target="_blank" rel="noopener noreferrer">
+            <a
+              className="project-live"
+              href={p.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseLeave={previewSrc ? handleMouseLeave : undefined}
+            >
               <IconExternal /> Live Demo
             </a>
           )}
           {p.demo && (
-            <a className="project-demo" href={p.demo} target="_blank" rel="noopener noreferrer">
+            <a
+              className="project-demo"
+              href={p.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseLeave={previewSrc ? handleMouseLeave : undefined}
+            >
               <IconVideo /> Demo Vid
             </a>
           )}
           {p.github && (
-            <a className="project-github" href={p.github} target="_blank" rel="noopener noreferrer">
+            <a
+              className="project-github"
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseMove={previewSrc ? handleMouseMove : undefined}
+              onMouseLeave={previewSrc ? handleMouseLeave : undefined}
+            >
               <IconGitHub /> GitHub
             </a>
           )}
@@ -339,6 +400,7 @@ function ProjectCard({ p }) {
     </div>
   )
 }
+
 function Projects({ onHover }) {
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
