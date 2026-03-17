@@ -654,3 +654,30 @@ a.nav-name:hover { color: var(--accent); }
   text-underline-offset: 3px;
   text-decoration-color: var(--accent);
 }
+
+
+
+/* ── Mobile Skills ── */
+@media (max-width: 600px) {
+  .mobile-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-skill-group {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-skill-group:last-child {
+    border-bottom: none;
+  }
+  .mobile-skill-cat {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+}

@@ -340,3 +340,22 @@ function MobileEducation({ onHover, S }) {
     </S>
   )
 }
+function MobileSkills({ onHover, S }) {
+  return (
+    <S id="skills" onHover={onHover}>
+      <div className="container">
+        <p className="section-label">Skills</p>
+        <div className="mobile-skills">
+          {SKILLS.map(group => (
+            <div key={group.category} className="mobile-skill-group">
+              <span className="mobile-skill-cat">{group.category}</span>
+              <div className="skill-tags">
+                {group.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </S>
+  )
+}

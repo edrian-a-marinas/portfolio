@@ -279,6 +279,13 @@ function Hero({ onPhotoClick, onHover }) {
   )
 }
 function Skills({ onHover }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  if (isMobile) return <MobileSkills onHover={onHover} S={S} />
   return (
     <S id="skills" onHover={onHover}>
       <div className="container">
