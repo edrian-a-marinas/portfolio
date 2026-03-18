@@ -58,7 +58,7 @@ const PROJECTS = [
   {
     name:     'Ask Edrian',
     live:     'https://edrian-ai-profile-assistant.vercel.app',
-    demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view?usp=sharing',
+    demo:     'https://drive.google.com/file/d/1Vy7cWOe9JEnhf4KeGjeI-g6dNRZ-LtMr/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/Personal-AI-Profile-Assistant',
     year:     '2026',
     subtitle: 'AI-powered personal chatbot that answers questions about me',
