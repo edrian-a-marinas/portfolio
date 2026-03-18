@@ -56,7 +56,7 @@ const PROJECTS = [
     stack: ['Python', 'FastAPI', 'Pydantic', 'PostgreSQL', 'React', 'TypeScript', 'Zod', 'Axios', 'Vite'],
   },
   {
-    name:     'Edrian AI',
+    name:     'Ask Edrian',
     live:     'https://edrian-ai-profile-assistant.vercel.app',
     demo:     'https://drive.google.com/file/d/1QnFidwca1VCwhxpipPuqP6FI_3ptGXBt/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/Personal-AI-Profile-Assistant',
@@ -306,8 +306,8 @@ function Skills({ onHover }) {
 // ── PROJECT CARD ──────────────────────────────────────────────────────────────
 function ProjectCard({ p, onPreviewChange }) {
   const PROJECT_PREVIEWS = {
-    'TransacScope':                  'projects/TransacScope.webp',
-    'Personal AI Profile Assistant': 'projects/PersonalAI.webp',
+    'TransacScope': 'projects/TransacScope.webp',
+    'Ask Edrian':   'projects/PersonalAI.webp',
   }
   const previewSrc = PROJECT_PREVIEWS[p.name] || null
 
