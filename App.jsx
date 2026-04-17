@@ -101,16 +101,33 @@ const EXTRA_PROJECTS = [
 ]
 const EXPERIENCE = [
   {
-    role: 'Software Developer · Capstone Project',
-    org:  'BirdCare – Smart Cage for Optimal Environmental Management',
-    date: 'Mar 2025 – Nov 2025',
-    live: 'https://birdcares.online/',
-    demo: 'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
+    org: 'CertiCode (SupSoft Tech)',
+    date: 'March 2026 – Present',
+    role: 'Full Stack Developer Intern',
+    live: null,
+    demo: null,
     bullets: [
-      'Developed an installable mobile app (PWA) using React.js connected to a FastAPI back-end, enabling bird owners to monitor real-time sensor readings, receive threshold alerts, watch a live ESP32-CAM video feed, and access historical data logs.',
-      'Integrated a multi-sensor IoT network (BME680, SCD40, MQ135, PMS5003, JSN-SR04T ultrasonic) via a Raspberry Pi Pico W, transmitting environmental data — temperature, humidity, CO₂, NH₃, VOCs, particulate matter, food and water levels — to Firebase in real time.',
+      'Developed and maintained RESTful APIs and backend services, implementing core business logic, secured endpoints, and async processing for optimized performance.',
+      'Designed and structured database models, schemas, and tables with clean relational architecture.',
+      'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
+      'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
+      'Contributed as part of a team to develop features, utilizing GitHub for version control, Jira for task management, and GitHub Actions for CI/CD pipelines.',
+      'Connected backend APIs to frontend interfaces using Axios and TypeScript, ensuring type-safe client-server communication.',
     ],
   },
+  {
+    org:  'Our Lady of Fatima University',
+    date: 'Sept 2025 – Nov 2025',
+    role: 'Software Developer',
+    live: null,
+    demo: 'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
+    bullets: [
+      'Built a React PWA with FastAPI backend, enabling bird owners to monitor live environmental data through a mobile-friendly dashboard.',
+      'Integrated Firebase as the real-time data layer, consuming IoT sensor readings and displaying temperature, humidity, CO₂, and more.',
+      'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
+      'Implemented historical data logging and live graph visualizations for tracking past and current sensor readings.',
+    ],
+  }
 ]
 const EDUCATION = [
   { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – 2026' },
@@ -701,8 +718,8 @@ function App() {
       <Nav hoveredSection={hoveredSection} activeSection={activeSection} />
       <Hero       onPhotoClick={() => setLightbox(true)} onHover={setHoveredSection} />
       <Skills     onHover={setHoveredSection} />
-      <Projects   onHover={setHoveredSection} />
       <Experience onHover={setHoveredSection} />
+      <Projects   onHover={setHoveredSection} />
       <Education  onHover={setHoveredSection} />
       <Certifications onHover={setHoveredSection} />
       <Footer />
