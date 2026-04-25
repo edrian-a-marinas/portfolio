@@ -238,14 +238,6 @@ function MobileProjects({ onHover, allProjects, S }) {
             onGalleryChange={setGalleryOpen}
           />
         </div>
-        {showHint && allProjects.length > 1 && (
-          <p className="swipe-hint">
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-              <path strokeLinecap="round" d="M7 11l5-5 5 5M7 17l5-5 5 5" style={{transform:'rotate(90deg)',transformOrigin:'50% 50%'}}/>
-            </svg>
-            swipe to browse
-          </p>
-        )}
         <div className="carousel-dots">
           {allProjects.map((_, i) => (
             <button
