@@ -31,11 +31,11 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy'] },
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy', 'Pytest'] },
   { category: 'Front-end', tags: ['TypeScript', 'React', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
   { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers'] },
+  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Automation', 'Testing'] },
 ]
 
 const PROJECTS = [
