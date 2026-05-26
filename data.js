@@ -31,7 +31,7 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy', 'Pytest'] },
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy', 'Pytest'] },
   { category: 'Front-end', tags: ['TypeScript', 'React.js', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
   { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Postman', 'Docker', 'Render', 'Linux/CLI', 'VS Code'] },
