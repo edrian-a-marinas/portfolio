@@ -32,9 +32,9 @@ const CONTACTS = [
 
 const SKILLS = [
   { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy', 'Pytest'] },
-  { category: 'Front-end', tags: ['TypeScript', 'React', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
+  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
-  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Postman', 'Vercel', 'Render', 'Linux/CLI', 'VS Code'] },
+  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Postman', 'Docker', 'Render', 'Linux/CLI', 'VS Code'] },
   { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Automation', 'Testing'] },
 ]
 
@@ -47,13 +47,13 @@ const PROJECTS = [
     year:     '2026',
     subtitle: 'Role-Based Business Finance & Transaction Management System',
     bullets: [
-      'A finance management web-app adaptable to any business, where admins can fully manage categories, users, and roles to fit their operations.',
-      'Implements role-based access control (Super Admin, Admin, Standard User) with JWT authentication, email verification, and backend rate limiting to prevent brute-force attacks.',
-      '37 secured REST API endpoints across 11 database tables — covering transaction CRUD, deletion workflows, notifications, audit logs, and report generation. Tested via Postman with Bearer token auth.',
-      'Production-hardened backend — CORS restrictions, trusted host validation, security headers (X-Frame-Options, HSTS, CSP), and environment-based debug gating.',      
-      'End-to-end type safety and data validation via Pydantic (backend) and Zod (frontend) — database constraints: CHECK, FK integrity, ENUMs, and partial unique indexes.',
+      'Role-based finance management system (Super Admin, Admin, Standard User) — admins fully control categories, users, roles, and transactions; standard users manage their own records and request deletions.',
+      'Built 39 secured REST API endpoints across 7 routers and 11 database tables — transaction CRUD, audit logs, deletion workflows, notifications, report generation, and AI chat. All JWT-protected.',
+      'Integrated an AI financial assistant powered by Groq (LLaMA 3.3 70B) — role-scoped financial context, keyword filtering, and in-memory caching (5-min TTL) to avoid rebuilding 5 heavy DB queries per message.',
+      'In-memory caching with TTL + immediate invalidation for categories (10-min TTL, wiped on any admin change); React Query on the frontend with staleTime: Infinity — data loads once per session.',
+      'Production-hardened: CORS, trusted host validation, security headers (HSTS, X-Frame-Options, CSP), rate limiting via SlowAPI, frontend lockout, password expiry enforcement, and environment-based debug gating.',
     ],
-    stack: ['Python', 'FastAPI', 'REST API', 'Pydantic', 'PostgreSQL', 'TypeScript', 'React', 'Zod', 'Axios', 'Vite'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'SlowAPI', 'TypeScript', 'React', 'React Query', 'Zod', 'Axios', 'pytest'],
   },
   {
     name:     'Ask Edrian',
@@ -113,7 +113,6 @@ const EXPERIENCE = [
       'Designed and structured database models, schemas, and tables with clean relational architecture.',
       'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
       'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
-      'Integrated third-party payment gateway APIs, handling secure transaction flows and persisting payment status to the database.',
       'Connected backend APIs to frontend interfaces using Axios and TypeScript, ensuring type-safe client-server communication.',
       'Contributed as part of a team to develop features, utilizing GitHub for version control, Jira for task management, and GitHub Actions for CI/CD pipelines.',
     ],
