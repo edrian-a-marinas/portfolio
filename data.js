@@ -31,11 +31,11 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'asyncpg', 'SQLAlchemy', 'Pytest'] },
-  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'SQLAlchemy', 'Alembic', 'Pytest', 'async/io', ] },
+  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'React Query', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
-  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Postman', 'Docker', 'Render', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Automation', 'Testing'] },
+  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Docker', 'Postman',  'Render', 'Vercel', 'Linux/CLI', 'VS Code'] },
+  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'In-Memory and Client-Side Caching', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Testing', 'Automation'] },
 ]
 
 const PROJECTS = [
