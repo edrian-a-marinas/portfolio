@@ -181,8 +181,10 @@ a.nav-name:hover { color: var(--accent); }
 }
 .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
 .contact-pill--resume {
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  font-weight: 600;
 }
 .contact-pill--resume:hover {
   background: var(--navy-light);
