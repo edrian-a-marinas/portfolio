@@ -1,5 +1,3 @@
-// data.js — edit this file to update your portfolio content.
-
 const NAV_LINKS = [
   { label: 'Skills',     href: '#skills'     },
   { label: 'Experience', href: '#experience' },
@@ -47,6 +45,7 @@ const EXPERIENCE = [
     demo: null,
     bullets: [
       'Developed and maintained RESTful APIs and backend services, implementing core business logic, secured endpoints, and async processing for optimized performance.',
+      'Optimized backend performance and query latency using in-memory caching and database indexing.',
       'Designed and structured database models, schemas, and tables with clean relational architecture.',
       'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
       'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
@@ -55,7 +54,6 @@ const EXPERIENCE = [
     ],
   },
 ]
-
 
 const PROJECTS = [
   {
@@ -146,7 +144,6 @@ const CERTIFICATIONS = [
   { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course',                                   year: '2025', images: ['certs/cert5.webp'] },
 ]
 
-// Add your screenshot filenames here per project.
 const GALLERY = {
   'TransacScope': [
     'gallery/transacscope/1.webp',
