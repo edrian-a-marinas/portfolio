@@ -1,44 +1,62 @@
 # Edrian Mariñas — Software Developer
-**🌐 Live:** [edrian-marinas.vercel.app](https://edrian-marinas.vercel.app)
+**🌐 Live:** [edrian-marinas.vercel.app](https://vercel.app)
 
 ---
 
-Metro Manila, PH · [LinkedIn](https://linkedin.com/in/edrian-a-marinas) · [GitHub](https://github.com/edrian-a-marinas) · edrian.a.marinas@gmail.com
+Metro Manila, PH · [LinkedIn](https://linkedin.com) · [GitHub](https://github.com) · edrian.a.marinas@gmail.com
 
 ---
 
 ## Skills
 
+
 | Area | Technologies |
 |------|-------------|
-| Back-end | Python, FastAPI, REST APIs, Pydantic, asyncpg, Type Annotations |
-| Database | PostgreSQL, MySQL, SQL, Supabase, DB Modeling |
-| Front-end | TypeScript, React, Zod, Vite, JavaScript, HTML/CSS, Tailwind |
-| Tools | Git, GitHub, Postman, Vercel, Render, Linux/CLI, VS Code |
-| Concepts | JWT Auth, RBAC, HTTP, Routing, End-to-End Type Safety, Schema Validation |
+| Back-end | Python, FastAPI, Django, REST APIs, Pydantic, SQLAlchemy, Alembic, Pytest, asyncio, AI Integrations |
+| Front-end | TypeScript, React.js, React Query, JavaScript, Zod, Vite, TailwindCSS |
+| Database | PostgreSQL, MySQL, SQL, Supabase, DB Modeling, Schemas |
+| Tools | Git, GitHub Actions (CI/CD pipelines), Docker, Postman, CLI/Linux, VS Code, Groq API |
+| Concepts | Auth(JWT), Role-Based Control, Data Validation, In-Memory and Client-Side Caching, Testing, Automation |
+
+---
+
+## Experience
+
+### Full Stack Developer Intern (500 hours)
+**CertiCode (SupSoft Tech)** | *Mar 2026 – Jun 2026*
+- Built and maintained RESTful APIs with core backend business logic and services.
+- Designed database models and schemas with migrations to ensure shared database consistency.
+- Enforced data integrity across database, backend, and frontend to prevent invalid inputs.
+- Team collaboration using GitHub, Jira, and GitHub Actions to manage development and CI/CD workflows.
 
 ---
 
 ## Projects
 
-### [TransacScope](https://transacscope.vercel.app) — Role-Based Business Finance & Transaction Management System `2026`
-A finance management web app adaptable to any business, where admins can fully manage categories, users, and roles to fit their operations.
-- Role-based access control (Super Admin, Admin, Standard User) with JWT authentication, email verification, and backend rate limiting to prevent brute-force attacks
-- 37 secured REST API endpoints across 11 database tables — covering transaction CRUD, deletion workflows, notifications, audit logs, and report generation. Tested via Postman with Bearer token auth
-- Password security: 90-day expiry with a forced change gate, 7-day reuse prevention via password history, and a protected demo account with role-locked access
-- 13 modal components handling the full user interaction layer — multi-step flows, role-gated views, and real-time notification deep-linking
-- End-to-end type safety and data validation via Pydantic (backend) and Zod (frontend) — database constraints: CHECK, FK integrity, ENUMs, and partial unique indexes
+### [TransacScope](https://vercel.app) — Role-Based Business Finance Management | Full-Stack Developer `Apr 2026`
+- Developed 39 secured REST API endpoints across 11 database tables, managing 1,000+ transactions.
+- Integrated an AI financial assistant with role-aware scoping, keyword filtering, and session-scoped context caching.
+- Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and React Query.
+- Wrote 119 Pytest tests covering CRUD, role enforcement, data validations and deletions. Automated via CI/CD.
 
-**Stack:** Python · FastAPI · PostgreSQL · React · TypeScript · Vite · Zod · Pydantic
+**Stack:** Python · FastAPI · PostgreSQL · React.js · TypeScript · Vite · TailwindCSS · Zod · Pydantic · SQLAlchemy · Alembic · Pytest · Groq API
 
 ---
 
-### Personal AI Profile Assistant `2026`
-AI-powered personal chatbot using FastAPI and React, powered by a locally-running Ollama model — answers questions about my skills, background, and personal details.
-- Handles complex and open-ended questions via the Ollama AI backend, running entirely locally on-device without any external API calls
-- Implements fast predefined responses for common queries (greetings, age, contacts) for instant replies without hitting the AI model
+### [Ask Edrian](https://vercel.app) — AI-powered personal chatbot | Full-Stack Developer `Jan 2026`
+- Built a personal AI chatbot, powered by Groq AI, that answers questions about me.
+- Implemented backend AI processing with API endpoints and a responsive frontend for interactive chat.
 
-**Stack:** Python · FastAPI · React · Ollama · REST API · JavaScript
+**Stack:** Python · FastAPI · React.js · TypeScript · Vite · TailwindCSS · Groq API
+
+---
+
+### [BirdCare](https://birdcares.online) — Environment Monitoring App with IoT | Software Developer `Nov 2025`
+- Developed BirdCare: mobile app for real-time monitoring and alerting of bird care conditions.
+- Built threshold alerts and graph visualizations for real-time and historical data.
+- Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.
+
+**Stack:** Python · FastAPI · React.js · JavaScript · Vite · TailwindCSS · IoT
 
 ---
 
@@ -64,24 +82,15 @@ Command-line Payroll & Employee Management System with PostgreSQL.
 
 ---
 
-## Experience
-
-**BirdCare – Smart Cage for Optimal Environmental Management** | Software Developer · Capstone Project
-Our Lady of Fatima University · March 2025 – November 2025
-- Developed an installable mobile app (PWA) using React.js connected to a FastAPI back-end, enabling real-time sensor monitoring, threshold alerts, and a live ESP32-CAM video feed
-- Integrated a multi-sensor IoT network (BME680, SCD40, MQ135, PMS5003, JSN-SR04T ultrasonic) via a Raspberry Pi Pico W, transmitting environmental data to Firebase in real time
-
----
-
 ## Education
 
-**Our Lady of Fatima University** — B.S. Information Technology *(2022 – Present)*
-**Arellano University** — STEM Strand *(2020 – 2022)*
+- **Our Lady of Fatima University** — B.S. Information Technology *(2022 – 2026)*
+- **Arellano University** — STEM Strand *(2020 – 2022)*
 
 ---
 
-## Certifications
+## Trainings & Seminars Attended
 
-- IT Specialist – Python · Certiport *(2026)*
-- Digital Fabric: AI Imperatives and Risk, Quantum Computing, and Automated Business · Seminar and Convention *(2025)*
-- Python Essentials 1 & 2 Course · Cisco NetAcad *(2024)*
+- Seminar and Convention: Digital Fabric: AI Imperatives and Risk, and Multimedia Augmentation.
+- IT Specialist – Python | Certiport, Pearson *(2026)*
+- Python Essentials 1 & 2 Certificate – NetAcad *(2024)*
