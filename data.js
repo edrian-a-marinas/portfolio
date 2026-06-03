@@ -31,12 +31,31 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'SQLAlchemy', 'Alembic', 'Pytest', 'async/io', ] },
-  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'React Query', 'JavaScript', 'Zod', 'Vite', 'Tailwind', 'HTML/CSS'] },  
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'SQLAlchemy', 'Alembic', 'Pytest', 'asyncio', 'AI Integrations'] },
+  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'React Query', 'JavaScript', 'Zod', 'Vite', 'TailwindCSS'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
-  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD)', 'Docker', 'Postman',  'Render', 'Vercel', 'Linux/CLI', 'VS Code'] },
-  { category: 'Concepts',  tags: ['Role-Based Access Control', 'Authentication (JWT)', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'In-Memory and Client-Side Caching', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Testing', 'Automation'] },
+  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD pipelines)', 'Docker', 'Postman', 'CLI/Linux', 'VS Code', 'Groq API'] },
+  { category: 'Concepts',  tags: ['Auth(JWT/oAuth)', 'Role-Based Access Control', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'In-Memory and Client-Side Caching', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Testing', 'Automation'] },
 ]
+
+const EXPERIENCE = [
+  {
+    org:  'CertiCode (SupSoft Tech)',
+    date: 'March 2026 – June 2026',
+    role: 'Full Stack Developer Intern (500 hours)',
+    live: null,
+    demo: null,
+    bullets: [
+      'Developed and maintained RESTful APIs and backend services, implementing core business logic, secured endpoints, and async processing for optimized performance.',
+      'Designed and structured database models, schemas, and tables with clean relational architecture.',
+      'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
+      'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
+      'Connected backend APIs to frontend interfaces using Axios and TypeScript, ensuring type-safe client-server communication.',
+      'Contributed as part of a team to develop features, utilizing GitHub for version control, Jira for task management, and GitHub Actions for CI/CD pipelines.'
+    ],
+  },
+]
+
 
 const PROJECTS = [
   {
@@ -44,14 +63,13 @@ const PROJECTS = [
     live:     'https://transacscope.vercel.app',
     demo:     'https://drive.google.com/file/d/1fXCICTBrgaCmMWBpuK1JLUi5SkQ1x5tR/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/TransacScope',
-    year:     '2026',
-    subtitle: 'Role-Based Business Finance & Transaction Management System',
+    year:     'Apr 2026',
+    subtitle: 'Role-Based Business Finance Management',
     bullets: [
-      'Role-based finance management system (Super Admin, Admin, Standard User) — admins fully control categories, users, roles, and transactions; standard users manage their own records and request deletions.',
-      'Built 39 secured REST API endpoints across 7 routers and 11 database tables — transaction CRUD, audit logs, deletion workflows, notifications, report generation, and AI chat. All JWT-protected.',
-      'Integrated an AI financial assistant powered by Groq (LLaMA 3.3 70B) — role-scoped financial context, keyword filtering, and in-memory caching (5-min TTL) to avoid rebuilding 5 heavy DB queries per message.',
-      'In-memory caching with TTL + immediate invalidation for categories (10-min TTL, wiped on any admin change); React Query on the frontend with staleTime: Infinity — data loads once per session.',
-      'Production-hardened: CORS, trusted host validation, security headers (HSTS, X-Frame-Options, CSP), rate limiting via SlowAPI, frontend lockout, password expiry enforcement, and environment-based debug gating.',
+      'Developed 39 secured REST API endpoints across 11 database tables, managing 1,000+ transactions.',
+      'Integrated an AI financial assistant with role-aware scoping, keyword filtering, and session-scoped context caching.',
+      'Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and React Query.',
+      'Wrote 119 Pytest tests covering CRUD, role enforcement, data validations and deletions. Automated via CI/CD.',
     ],
     stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'SlowAPI', 'TypeScript', 'React', 'React Query', 'Zod', 'Axios', 'pytest'],
   },
@@ -60,13 +78,27 @@ const PROJECTS = [
     live:     'https://edrian-ai-profile-assistant.vercel.app',
     demo:     'https://drive.google.com/file/d/1Vy7cWOe9JEnhf4KeGjeI-g6dNRZ-LtMr/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/Personal-AI-Profile-Assistant',
-    year:     '2026',
-    subtitle: 'AI-powered personal chatbot that answers questions about me',
+    year:     'Jan 2026',
+    subtitle: 'AI-powered personal chatbot',
     bullets: [
-      'Built a personal AI chatbot using FastAPI and React, powered by Groq AI — answers questions about my skills, background, projects, and personal details.',
-      'Implemented keyword-based fast responses for common queries (greetings, date, jokes) for instant replies, with Groq AI as the fallback for open-ended and complex questions.',
+      'Built a personal AI chatbot, powered by Groq AI, that answers questions about me.',
+      'Implemented backend AI processing with API endpoints and a responsive frontend for interactive chat.',
     ],
     stack: ['Python', 'FastAPI', 'REST API', 'React', 'Groq', 'REST API', 'JavaScript'],
+  },
+  {
+    name:     'BirdCare',
+    live:     'https://birdcares.online',
+    demo:     'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
+    github:   null,
+    year:     'Nov 2025',
+    subtitle: 'Environment Monitoring App with IoT',
+    bullets: [
+      'Developed BirdCare: mobile app for real-time monitoring and alerting of bird care conditions.',
+      'Built threshold alerts and graph visualizations for real-time and historical data.',
+      'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
+    ],
+    stack: ['React', 'FastAPI', 'Firebase', 'IoT', 'JavaScript'],
   },
 ]
 
@@ -76,7 +108,7 @@ const EXTRA_PROJECTS = [
     live:     null,
     demo:     'https://drive.google.com/file/d/1YUDYgXpGBsNw0J_L0D35D3lgeAxLEUCc/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/water_monitoring_mysql',
-    year:     '2025',
+    year:     'May 2025',
     subtitle: 'Real-time water level and temperature monitoring with IoT and desktop GUI',
     bullets: [
       'Built a real-time monitoring system using a Raspberry Pi Pico W with an HCSR04 ultrasonic sensor and DS18B20 temperature sensor, transmitting live readings via TCP/IP over Wi-Fi.',
@@ -98,37 +130,6 @@ const EXTRA_PROJECTS = [
       'Designed a normalized database schema across 5 tables (employees, departments, jobs, payroll_periods, payroll_records) with FK constraints and safe deletion handling.',
     ],
     stack: ['Python', 'PostgreSQL', 'asyncpg', 'SQL', 'CLI'],
-  },
-]
-
-const EXPERIENCE = [
-  {
-    org:  'CertiCode (SupSoft Tech)',
-    date: 'March 2026 – Present',
-    role: 'Full Stack Developer Intern',
-    live: null,
-    demo: null,
-    bullets: [
-      'Developed and maintained RESTful APIs and backend services, implementing core business logic, secured endpoints, and async processing for optimized performance.',
-      'Designed and structured database models, schemas, and tables with clean relational architecture.',
-      'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
-      'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
-      'Connected backend APIs to frontend interfaces using Axios and TypeScript, ensuring type-safe client-server communication.',
-      'Contributed as part of a team to develop features, utilizing GitHub for version control, Jira for task management, and GitHub Actions for CI/CD pipelines.',
-    ],
-  },
-  {
-    org:  'Our Lady of Fatima University',
-    date: 'Sept 2025 – Nov 2025',
-    role: 'Software Developer',
-    live: null,
-    demo: 'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
-    bullets: [
-      'Built a React PWA with FastAPI backend, enabling bird owners to monitor live environmental data through a mobile-friendly dashboard.',
-      'Integrated Firebase as the real-time data layer, consuming IoT sensor readings and displaying temperature, humidity, CO₂, and more.',
-      'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
-      'Implemented historical data logging and live graph visualizations for tracking past and current sensor readings.',
-    ],
   },
 ]
 
