@@ -96,7 +96,7 @@ const PROJECTS = [
       'Built threshold alerts and graph visualizations for real-time and historical data.',
       'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
     ],
-    stack: ['React', 'FastAPI', 'Firebase', 'IoT', 'JavaScript'],
+    stack: ['Python', 'FastAPI', 'REST API', 'React', 'Firebase', 'IoT', 'Rasberrypi Pico W'],
   },
 ]
 
@@ -159,6 +159,14 @@ const GALLERY = {
   ],
   'Ask Edrian': [
     'gallery/ask-edrian/1.webp',
+  ],
+  'BirdCare':[
+    'gallery/birdcare/1.webp',
+    'gallery/birdcare/2.webp',
+    'gallery/birdcare/3.webp',
+    'gallery/birdcare/4.webp',
+    'gallery/birdcare/5.webp',
+    'gallery/birdcare/6.webp',
   ],
   'Water Level & Temperature Monitoring': [
     'gallery/water-monitoring/1.webp',
