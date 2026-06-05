@@ -38,7 +38,7 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
-    org:  'CertiCode (SupSoft Tech)',
+    org:  'SupSoft Tech',
     date: 'March 2026 – June 2026',
     role: 'Full Stack Developer Intern (500 hours)',
     live: null,
