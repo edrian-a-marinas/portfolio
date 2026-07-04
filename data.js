@@ -29,11 +29,11 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Pydantic', 'SQLAlchemy', 'Alembic', 'Pytest', 'asyncio', 'AI Integrations'] },
-  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'React Query', 'JavaScript', 'Zod', 'Vite', 'TailwindCSS'] },  
-  { category: 'Database',  tags: ['PostgreSQL', 'MySQL', 'SQL', 'Supabase', 'DB Modeling', 'Schemas'] },
-  { category: 'Tools',     tags: ['Git', 'GitHub Actions (CI/CD pipelines)', 'Docker', 'Postman', 'CLI/Linux', 'VS Code', 'Groq API'] },
-  { category: 'Concepts',  tags: ['Auth(JWT/oAuth)', 'Role-Based Access Control', 'Row-Level Security (RLS)', 'End-to-End Type Safety', 'Schema Validation', 'In-Memory and Client-Side Caching', 'Rate Limiting', 'CORS', 'Secrets Management', 'Security Headers', 'Testing', 'Automation'] },
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'SQLAlchemy', 'Alembic', 'asyncio', 'Celery', 'AI(RAG)', 'ML/Analytics', 'Pytest'] },
+  { category: 'Front-end', tags: ['TypeScript', 'React.js', 'TanStack (Query, Router, Table)', 'Zod', 'TailwindCSS', 'Radix UI',  'Vite'] },  
+  { category: 'Database',  tags: ['PostgreSQL', 'Redis', 'SQL', 'MySQL', 'Supabase'] },
+  { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS, ECS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
+  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'Auth(JWT/oAuth)', 'Role-Based Access Control', 'CORS', 'Secrets Management', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing'] },
 ]
 
 const EXPERIENCE = [
@@ -44,18 +44,53 @@ const EXPERIENCE = [
     live: null,
     demo: null,
     bullets: [
-      'Developed and maintained RESTful APIs and backend services, implementing core business logic, secured endpoints, and async processing for optimized performance.',
-      'Optimized backend performance and query latency using in-memory caching and database indexing.',
-      'Designed and structured database models, schemas, and tables with clean relational architecture.',
-      'Enforced end-to-end data validation and type safety across database, backend, and frontend layers to prevent invalid data from reaching the database.',
-      'Implemented role-based access control with distinct admin and user permissions for authentication and authorization.',
-      'Connected backend APIs to frontend interfaces using Axios and TypeScript, ensuring type-safe client-server communication.',
-      'Contributed as part of a team to develop features, utilizing GitHub for version control, Jira for task management, and GitHub Actions for CI/CD pipelines.'
+      "Solved full-stack issues that spanned both frontend and backend, developing a habit of verifying data at its source.",
+      "Reduced backend and database load using end-to-end caching, database indexing, and pagination across the stack.",
+      "Reviewed codebases of our org's large, established apps alongside seniors, and picked up real lessons on how to maintain and scale a project as it grows.",
+      "Enforced access control and permission checks at the API level rather than relying on the interface alone, securing endpoints against direct requests and bypass attempts.",
+      "Validated data at every layer — frontend and backend — to prevent invalid or inconsistent data from reaching the database.",
+      "Ran automated tests and manual endpoint checks before every push, with QA reviewing and questioning pull requests before merging through the team's CI/CD pipeline.",
     ],
   },
 ]
 
 const PROJECTS = [
+  {
+    name:     'SiteSync',
+    live:     'https://getsitesync.vercel.app',
+    demo:      'https://drive.google.com/file/d/1l8umfMvtsFmqvmx9zrP3nbgHdjgkLYcd/view?usp=sharing',
+    github:   'https://github.com/edrian-a-marinas/sitesync-api', 
+    docs:     [
+      { label: 'Brief', href: 'https://github.com/edrian-a-marinas/sitesync-client/blob/main/brief.md' },
+      { label: 'Roadmap', href: 'https://github.com/edrian-a-marinas/sitesync-client/blob/main/roadmap.md' },
+    ],
+    year:     'Jun 2026',
+    subtitle: 'Construction Site Management Platform',
+    bullets: [
+      'Designed 69 REST API endpoints across 13 relational database tables, structured into a modular routers/services/schemas architecture with SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
+      'Built a cache-first Redis layer with TTL and pattern-based invalidation across core business logic, and report generation, AI queries, and ML retraining to Celery workers with a dedicated Beat container for scheduled jobs.',
+      'Built a RAG assistant with 7-intent routing questions to targeted SQL retrievers, and trained 3 RandomForest models on 2,955 seeded daily logs and 8,521 material records spanning 2024–2026 to predict budget overrun, delay risk, and material cost forecasts.',
+      'Deployed via manually SSH-configured EC2 running 5 Dockerized services, with RDS/S3 for database/storage, backed by a GitHub Actions CI/CD pipeline that runs 452 pytest tests with 92% coverage across all core business before auto-deploying to production EC2',
+      'Built a role-gated React/TypeScript with server-driven pagination, using TanStack Query to cache to prevent redundant backend hits. with useMutations — keeping data fresh-live without manual refreshes — and Zod to validate all forms client-side before any request is sent.',
+    ],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Celery', 'AWS (EC2, RDS, S3, SQS, ECS)', 'Docker', 'Pytest', 'TypeScript', 'React', 'TanStack (Query, Router, Table)', 'Zod', 'Zustand'],
+  },
+  {
+    name:     'SkyLink',
+    live:     'https://skylink-frontend-two.vercel.app',
+    demo:     'https://drive.google.com/file/d/1qPAw76EiD4wf2H8K3PXTD4AjTSnyFDEk/view?usp=drive_link',
+    github:   'https://github.com/edrian-a-marinas/skylink-api', 
+    year:     'Jun 2026',
+    subtitle: 'Skylink — Flight Booking & Reservation Management',
+    bullets: [
+      'Designed 65 REST API endpoints across 15 relational database tables, structured into a modular routers/services/schemas architecture with SQLAlchemy models and Alembic-managed migrations.',
+      'Built a Redis-backed caching layer with pattern-based invalidation on flight search, per-endpoint rate limiting with automatic in-memory fallback.',
+      'Trained Linear/Logistic Regression models on 986 seeded bookings for revenue forecasting, demand prediction, and cancellation risk scoring — plus rule-based dynamic pricing and anomaly detection.',
+      'Built a multi-step booking flow (seat selection, passenger details, payment) with TanStack Query caching and client-side validation before requests reach the backend.',
+      'Wrote 306 Pytest tests automated through a CI/CD pipeline, and integrated Google OAuth alongside JWT-based authentication and account verification.',
+    ],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Pytest', 'TypeScript', 'React', 'TanStack Query', 'Zod', 'Render', 'Vercel', 'Supabase'],
+  },
   {
     name:     'TransacScope',
     live:     'https://transacscope.vercel.app',
@@ -66,12 +101,15 @@ const PROJECTS = [
     bullets: [
       'Developed 39 secured REST API endpoints across 11 database tables, managing 1,000+ transactions.',
       'Integrated an AI financial assistant with role-aware scoping, keyword filtering, and session-scoped context caching.',
-      'Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and React Query.',
+      'Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and Tanstack Query.',
       'Wrote 119 Pytest tests covering CRUD, role enforcement, data validations and deletions. Automated via CI/CD.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'SlowAPI', 'TypeScript', 'React', 'React Query', 'Zod', 'Axios', 'pytest'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'SlowAPI', 'TypeScript', 'React', 'Tanstack Query', 'Zod', 'Axios', 'pytest'],
   },
-  {
+]
+
+const EXTRA_PROJECTS = [
+    {
     name:     'Ask Edrian',
     live:     'https://edrian-ai-profile-assistant.vercel.app',
     demo:     'https://drive.google.com/file/d/1Vy7cWOe9JEnhf4KeGjeI-g6dNRZ-LtMr/view?usp=sharing',
@@ -98,9 +136,6 @@ const PROJECTS = [
     ],
     stack: ['Python', 'FastAPI', 'REST API', 'React', 'Firebase', 'IoT', 'Rasberrypi Pico W'],
   },
-]
-
-const EXTRA_PROJECTS = [
   {
     name:     'Water Level & Temperature Monitoring',
     live:     null,
@@ -114,20 +149,6 @@ const EXTRA_PROJECTS = [
       'All readings are automatically logged into a MySQL database via a dedicated connector module, with critical alerts (very low/empty water) visually flagged on the graph.',
     ],
     stack: ['Python', 'Tkinter', 'Matplotlib', 'MySQL', 'Raspberry Pi Pico W', 'MicroPython', 'TCP/IP'],
-  },
-  {
-    name:     'Payroll CLI',
-    live:     null,
-    demo:     'https://drive.google.com/file/d/1T2wwMvsthXSfjcYccfNE6KXKw8S-nATm/view',
-    github:   'https://github.com/edrian-a-marinas/payroll_CLI_postgreSQL',
-    year:     '2024',
-    subtitle: 'Command-line Payroll & Employee Management System with PostgreSQL',
-    bullets: [
-      'Built a menu-driven CLI system in Python for full employee CRUD — managing status, departments, and job assignments across a relational PostgreSQL schema.',
-      'Implemented payroll generation with overtime and deduction calculations, duplicate period prevention, and summary reports with total and average net pay.',
-      'Designed a normalized database schema across 5 tables (employees, departments, jobs, payroll_periods, payroll_records) with FK constraints and safe deletion handling.',
-    ],
-    stack: ['Python', 'PostgreSQL', 'asyncpg', 'SQL', 'CLI'],
   },
 ]
 
@@ -143,8 +164,33 @@ const CERTIFICATIONS = [
   { name: 'Backend & Frontend Web Development · Udemy',                                                                   year: '2024', images: ['certs/cert4.webp'] },
   { name: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course',                                   year: '2025', images: ['certs/cert5.webp'] },
 ]
-
 const GALLERY = {
+  'SiteSync': [
+    'gallery/sitesync/1.webp',
+    'gallery/sitesync/2.webp',
+    'gallery/sitesync/3.webp',
+    'gallery/sitesync/4.webp',
+    'gallery/sitesync/5.webp',
+    'gallery/sitesync/6.webp',
+    'gallery/sitesync/7.webp',
+    'gallery/sitesync/8.webp',
+    'gallery/sitesync/9.webp',
+    'gallery/sitesync/10.webp',
+  ],
+    'SkyLink': [
+    'gallery/skylink/1.webp',
+    'gallery/skylink/2.webp',
+    'gallery/skylink/3.webp',
+    'gallery/skylink/4.webp',
+    'gallery/skylink/5.webp',
+    'gallery/skylink/6.webp',
+    'gallery/skylink/7.webp',
+    'gallery/skylink/8.webp',
+    'gallery/skylink/9.webp',
+    'gallery/skylink/10.webp',
+    'gallery/skylink/11.webp',
+
+  ],
   'TransacScope': [
     'gallery/transacscope/1.webp',
     'gallery/transacscope/2.webp',

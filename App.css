@@ -330,6 +330,23 @@ a.nav-name:hover { color: var(--accent); }
   gap: 5px;
   font-size: 12px;
   font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 4px 10px;
+  background: #597da0;
+  border: 1px solid #2a75c0;
+  border-radius: 5px;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.project-github:hover { opacity: 0.75; }
+
+.project-doc {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--muted);
   text-decoration: none;
   padding: 4px 10px;
@@ -339,7 +356,7 @@ a.nav-name:hover { color: var(--accent); }
   flex-shrink: 0;
   transition: opacity 0.15s;
 }
-.project-github:hover { opacity: 0.75; }
+.project-doc:hover { opacity: 0.75; }
 
 /* ── Project stack ── */
 .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }

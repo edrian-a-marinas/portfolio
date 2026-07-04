@@ -9,11 +9,7 @@ function Hero({ onPhotoClick, onHover }) {
             <h1 className="hero-name">Edrian Aldrin C. Mariñas</h1>
             <p className="hero-title">Software Developer · Metro Manila, PH</p>
             <p className="hero-bio">
-              Experienced in building APIs using Python and FastAPI, working with databases
-              PostgreSQL and MySQL, and integrating React frontends with backend services.
-              Focused on end-to-end data integrity — from database constraints and schema
-              validation to runtime type safety — to catch errors at every layer before
-              they reach production.
+              Experienced in building APIs using Python and FastAPI, working with databases PostgreSQL and MySQL, and integrating React frontends with backend services. Skilled in full-stack data validation, API-level security, and using caching and indexing to keep backend performance efficient at scale. Comfortable building and integrating machine learning models into production systems.
             </p>
             <div className="hero-contacts">
               <a className="contact-pill contact-pill--resume" href="docs/resume_marinas.pdf" target="_blank" rel="noopener noreferrer">
