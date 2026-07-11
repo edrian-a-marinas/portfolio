@@ -29,11 +29,11 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'SQLAlchemy', 'Alembic', 'asyncio', 'Celery', 'AI(RAG)', 'ML/Analytics', 'Pytest'] },
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'SQLAlchemy', 'Alembic', 'Celery', 'AI (RAG)', 'LangChain', 'ML/Analytics', 'WebSocket', 'Webhooks', 'Pytest'] },
   { category: 'Front-end', tags: ['TypeScript', 'React.js', 'TanStack (Query, Router, Table)', 'Zod', 'TailwindCSS', 'Radix UI',  'Vite'] },  
-  { category: 'Database',  tags: ['PostgreSQL', 'Redis', 'SQL', 'MySQL', 'Supabase'] },
-  { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS, ECS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
-  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'Auth(JWT/oAuth)', 'Role-Based Access Control', 'CORS', 'Secrets Management', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing'] },
+  { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL',  'MySQL', 'Supabase'] },
+  { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
+  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'Auth(JWT/oAuth)', 'Role-Based Access Control', 'CORS', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Real-time (WebSocket)', 'LLM API'] },
 ]
 
 const EXPERIENCE = [
@@ -64,23 +64,23 @@ const PROJECTS = [
       { label: 'Brief', href: 'https://github.com/edrian-a-marinas/sitesync-client/blob/main/brief.md' },
       { label: 'Roadmap', href: 'https://github.com/edrian-a-marinas/sitesync-client/blob/main/roadmap.md' },
     ],
-    year:     'Jun 2026',
+    year:     'July 2026',
     subtitle: 'Construction Site Management Platform',
     bullets: [
-      'Designed 69 REST API endpoints across 13 relational database tables, structured into a modular routers/services/schemas architecture with SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
-      'Built a cache-first Redis layer with TTL and pattern-based invalidation across core business logic, and report generation, AI queries, and ML retraining to Celery workers with a dedicated Beat container for scheduled jobs.',
-      'Built a RAG assistant with 7-intent routing questions to targeted SQL retrievers, and trained 3 RandomForest models on 2,955 seeded daily logs and 8,521 material records spanning 2024–2026 to predict budget overrun, delay risk, and material cost forecasts.',
-      'Deployed via manually SSH-configured EC2 running 5 Dockerized services, with RDS/S3 for database/storage, backed by a GitHub Actions CI/CD pipeline that runs 452 pytest tests with 92% coverage across all core business before auto-deploying to production EC2',
-      'Built a role-gated React/TypeScript with server-driven pagination, using TanStack Query to cache to prevent redundant backend hits. with useMutations — keeping data fresh-live without manual refreshes — and Zod to validate all forms client-side before any request is sent.',
+      'Designed 77 REST API endpoints across 15 relational database tables in a monolithic FastAPI backend, using SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
+      'Built a cache-first Redis layer with TTL and pattern-based invalidation, offloaded report generation, AI queries, and ML retraining to Celery workers, and added real-time WebSocket notifications backed by MongoDB, with Slack webhook alerts on high-severity incidents.',
+      'Built a LangChain + pgvector RAG AI LLM API assistant with semantic similarity search over embedded records, and trained 3 RandomForest models on 2,955 seeded daily logs and 8,521 material records spanning 2024–2026 to predict and forecast project risk.',
+      'Deployed via manually SSH-configured EC2 running 5 Dockerized services, with RDS/S3 for database/storage, backed by a GitHub Actions CI/CD pipeline that runs 482 pytest tests with 91% coverage across all core business before auto-deploying to production EC2',
+      'Built a role-gated React/TypeScript with server-driven pagination, using TanStack Query to cache to prevent redundant backend hits. with useMutations — keeping data live without manual refreshes — and Zod to validate all forms client-side before any request is sent.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Celery', 'AWS (EC2, RDS, S3, SQS, ECS)', 'Docker', 'Pytest', 'TypeScript', 'React', 'TanStack (Query, Router, Table)', 'Zod', 'Zustand'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Alembic', 'Redis', 'Celery', 'WebSocket', 'Webhooks','AWS (EC2, RDS, S3, SQS)', 'Docker', 'Pytest', 'TypeScript', 'React', 'TanStack (Query, Router, Table)', 'Zod', 'Zustand'],
   },
   {
     name:     'SkyLink',
     live:     'https://skylink-frontend-two.vercel.app',
     demo:     'https://drive.google.com/file/d/1qPAw76EiD4wf2H8K3PXTD4AjTSnyFDEk/view?usp=drive_link',
     github:   'https://github.com/edrian-a-marinas/skylink-api', 
-    year:     'Jun 2026',
+    year:     'May 2026',
     subtitle: 'Skylink — Flight Booking & Reservation Management',
     bullets: [
       'Designed 65 REST API endpoints across 15 relational database tables, structured into a modular routers/services/schemas architecture with SQLAlchemy models and Alembic-managed migrations.',
