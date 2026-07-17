@@ -153,7 +153,7 @@ const EXTRA_PROJECTS = [
 ]
 
 const EDUCATION = [
-  { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – 2026' },
+  { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – 2026', certUrl: '/docs/graduation_certificate.pdf' },
   { school: 'Arellano University',           degree: 'STEM Strand',                                  date: '2020 – 2022' },
 ]
 

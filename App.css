@@ -470,6 +470,18 @@ a.nav-name:hover { color: var(--accent); }
 .edu-item:last-child { margin-bottom: 0; }
 .edu-school { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
 .edu-degree { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.edu-degree-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent);
+  transition: color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.edu-degree-link:hover { color: var(--accent); }
+.edu-degree-link svg { width: 10px; height: 10px; flex-shrink: 0; }
 .edu-date   { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--muted-lt); white-space: nowrap; padding-top: 2px; }
 
 /* ── Certifications ── */
