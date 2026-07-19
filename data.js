@@ -67,7 +67,7 @@ const PROJECTS = [
     year:     'July 2026',
     subtitle: 'Construction Site Management Platform',
     bullets: [
-      'Designed 77 REST API endpoints across 15 relational database tables in a monolithic FastAPI backend, using SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
+      'Designed 77 REST API endpoints across 16 relational database tables in a monolithic FastAPI backend, using SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
       'Built a cache-first Redis layer with TTL and pattern-based invalidation, offloaded report generation, AI queries, and ML retraining to Celery workers, and added real-time WebSocket notifications backed by MongoDB, with Slack webhook alerts on high-severity incidents.',
       'Built a LangChain + pgvector RAG AI LLM API assistant with semantic similarity search over embedded records, and trained 3 RandomForest models on 2,955 seeded daily logs and 8,521 material records spanning 2024–2026 to predict and forecast project risk.',
       'Deployed via manually SSH-configured EC2 running 5 Dockerized services, with RDS/S3 for database/storage, backed by a GitHub Actions CI/CD pipeline that runs 492 pytest tests with 91% coverage across all core business before auto-deploying to production EC2',
