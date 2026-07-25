@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/certs/cert1",
+      "destination": "/certs/cert1.webp",
+      "permanent": false
+    },
+    {
+      "source": "/certs/cert2",
+      "destination": "/certs/cert2.webp",
+      "permanent": false
+    },
+    {
+      "source": "/certs/cert3a",
+      "destination": "/certs/cert3a.webp",
+      "permanent": false
+    },
+    {
+      "source": "/certs/cert3b",
+      "destination": "/certs/cert3b.webp",
+      "permanent": false
+    },
+    {
+      "source": "/certs/cert4",
+      "destination": "/certs/cert4.webp",
+      "permanent": false
+    },
+    {
+      "source": "/certs/cert5",
+      "destination": "/certs/cert5.webp",
+      "permanent": false
+    },
+    {
+      "source": "/docs/graduation_certificate",
+      "destination": "/docs/graduation_certificate.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/docs/resume_marinas",
+      "destination": "/docs/resume_marinas.pdf",
+      "permanent": false
+    }
+  ]
+}
