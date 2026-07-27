@@ -29,8 +29,8 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'SQLAlchemy', 'Alembic', 'Celery', 'AI/ML', 'LangChain', 'pandas', 'PyTorch', 'scikit-learn', 'WebSocket', 'Webhooks', 'Pytest'] },
-  { category: 'Front-end', tags: ['TypeScript', 'JavaScript', 'HTML/CSS', 'React.js', 'TanStack (Query, Router, Table)', 'Zod', 'TailwindCSS', 'Radix UI', 'Vite'] },  
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'REST APIs', 'SQLAlchemy', 'Alembic', 'Celery', 'AI/ML', 'LangChain', 'pandas', 'scikit-learn', 'PyTorch', 'Pytest', 'Pydantic', 'WebSocket', 'Webhooks'] },
+  { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Vite', 'Radix UI'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL', 'MySQL', 'Supabase'] },
   { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
   { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'Role-Based Access Control', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Auth (JWT/oAuth)', 'CORS', 'LLM API Integration', 'RAG Architecture'] },
@@ -73,7 +73,7 @@ const PROJECTS = [
       'Deployed via manually SSH-configured AWS EC2 running 5 Dockerized services, with RDS/S3 for database/storage, backed by a GitHub Actions CI/CD pipeline that runs 492 pytest tests with 91% coverage across all core business before auto-deploying to production EC2',
       'Built a role-gated React/TypeScript with server-driven pagination, using TanStack Query to cache to prevent redundant backend hits. with useMutations — keeping data live without manual refreshes — and Zod to validate all forms client-side before any request is sent.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Alembic', 'Redis', 'Celery', 'WebSocket', 'Webhooks','AWS (EC2, RDS, S3, SQS)', 'Docker', 'pandas', 'PyTorch', 'scikit-learn', 'Pytest', 'TypeScript', 'React', 'TanStack (Query, Router, Table)', 'Zod'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Alembic', 'Redis', 'Celery', 'WebSocket', 'Webhooks','AWS (EC2, RDS, S3, SQS)', 'Docker', 'pandas','scikit-learn', 'PyTorch', 'Pytest', 'TypeScript', 'React', 'TanStack (Query, Router, Table)', 'Zod'],
   },
   {
     name:     'SkyLink',
@@ -89,7 +89,7 @@ const PROJECTS = [
       'Built a multi-step booking flow (seat selection, passenger details, payment) with TanStack Query caching and client-side validation before requests reach the backend.',
       'Wrote 306 Pytest tests automated through a CI/CD pipeline, and integrated Google OAuth alongside JWT-based authentication and account verification.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Pytest', 'TypeScript', 'React', 'TanStack Query', 'Zod', 'Render', 'Vercel', 'Supabase'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Pydantic', 'SlowAPI', 'Pytest', 'Render', 'Supabase', 'TypeScript', 'React', 'TanStack Query', 'Zod'],
   },
   {
     name:     'TransacScope',
@@ -104,7 +104,7 @@ const PROJECTS = [
       'Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and Tanstack Query.',
       'Wrote 119 Pytest tests covering CRUD, role enforcement, data validations and deletions. Automated via CI/CD.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'SlowAPI', 'TypeScript', 'React', 'Tanstack Query', 'Zod', 'Axios', 'pytest'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'Pytest', 'Render', 'Supabase', 'TypeScript', 'React', 'Tanstack Query', 'Zod'],
   },
 ]
 
