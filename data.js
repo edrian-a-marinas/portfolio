@@ -33,7 +33,7 @@ const SKILLS = [
   { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Vite', 'Radix UI'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL', 'MySQL', 'Supabase'] },
   { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
-  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'CORS','Role-Based Access Control', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Auth (cookies/JWT/oAuth)', 'LLM API Integration', 'RAG Architecture'] },
+  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'CORS','Role-Based Access Control (RBAC)', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Auth (cookies/JWT/oAuth)', 'LLM API Integration', 'RAG Architecture'] },
 ]
 
 const EXPERIENCE = [
@@ -65,7 +65,7 @@ const PROJECTS = [
       { label: 'Roadmap', href: 'https://github.com/edrian-a-marinas/sitesync-client/blob/main/roadmap.md' },
     ],
     year:     'July 2026',
-    subtitle: 'Construction Site Management Platform',
+    subtitle: 'Construction Site Management Platform — RBAC (Owner, PM, Worker)',
     bullets: [
       'Designed 77 REST API endpoints across 16 relational database tables in a monolithic FastAPI backend, using SQLAlchemy models and Alembic-managed migrations for consistent, scalable code organization.',
       'Built a cache-first Redis layer with TTL and pattern-based invalidation, offloaded report generation, AI queries, and ML retraining to Celery workers via AWS SQS, and added real-time WebSocket notifications backed by MongoDB, with Slack webhook alerts on incidents.',
@@ -77,11 +77,11 @@ const PROJECTS = [
   },
   {
     name:     'SkyLink',
-    live:     'https://skylink-frontend-two.vercel.app',
+    live:     'https://skylink-ph.vercel.app',
     demo:     'https://drive.google.com/file/d/1qPAw76EiD4wf2H8K3PXTD4AjTSnyFDEk/view?usp=drive_link',
     github:   'https://github.com/edrian-a-marinas/skylink-api', 
     year:     'May 2026',
-    subtitle: 'Skylink — Flight Booking & Reservation Management',
+    subtitle: 'Skylink — Flight Booking & Reservation Management — RBAC (Admin, Passenger)',
     bullets: [
       'Designed 65 REST API endpoints across 15 relational database tables, structured into a modular routers/services/schemas architecture with SQLAlchemy models and Alembic-managed migrations.',
       'Built a Redis-backed caching layer with pattern-based invalidation on flight search, per-endpoint rate limiting with automatic in-memory fallback.',
@@ -89,7 +89,7 @@ const PROJECTS = [
       'Built a multi-step booking flow (seat selection, passenger details, payment) with TanStack Query caching and client-side validation before requests reach the backend.',
       'Wrote 306 Pytest tests automated through a CI/CD pipeline, and integrated Google OAuth alongside JWT-based authentication and account verification.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Pydantic', 'SlowAPI', 'Pytest', 'Render', 'Supabase', 'TypeScript', 'React', 'TanStack Query', 'Zod'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Alembic', 'Redis', 'Pydantic', 'SlowAPI', 'Pytest', 'Render', 'Supabase', 'Google OAuth', 'Vercel', 'TypeScript', 'React', 'TanStack Query', 'Zod'],
   },
   {
     name:     'TransacScope',
@@ -97,18 +97,33 @@ const PROJECTS = [
     demo:     'https://drive.google.com/file/d/1fXCICTBrgaCmMWBpuK1JLUi5SkQ1x5tR/view?usp=sharing',
     github:   'https://github.com/edrian-a-marinas/TransacScope',
     year:     'Apr 2026',
-    subtitle: 'Role-Based Business Finance Management',
+    subtitle: 'Business Finance Management — RBAC (Super Admin, Admin, Standard User)',
     bullets: [
       'Developed 39 secured REST API endpoints across 11 database tables, managing 1,000+ transactions.',
       'Integrated an AI financial assistant with role-aware scoping, keyword filtering, and session-scoped context caching.',
       'Implemented in-memory caching (TTL + Invalidation), connection pooling, rate limiting, and Tanstack Query.',
-      'Wrote 119 Pytest tests covering CRUD, role enforcement, data validations and deletions. Automated via CI/CD.',
+      'Enforced role-based access control (Super Admin, Admin, Standard User) at the API level, not just the UI — with endpoints for promoting, demoting, activating, and deactivating user accounts.',
+      'Enforced email verification on registration using a 6-digit code with resend cooldown and max-send limits before account activation.',
     ],
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'Pytest', 'Render', 'Supabase', 'TypeScript', 'React', 'Tanstack Query', 'Zod'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'Pydantic', 'Pytest', 'Email Verification', 'Render', 'Supabase', 'Vercel', 'TypeScript', 'React', 'Tanstack Query', 'Zod'],
   },
 ]
 
 const EXTRA_PROJECTS = [
+  {
+    name:     'BirdCare (Capstone Project)',
+    live:     'https://birdcares.online',
+    demo:     'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
+    github:   null,
+    year:     'Nov 2025',
+    subtitle: 'Environment Monitoring App with IoT',
+    bullets: [
+      'Developed BirdCare: mobile app for real-time monitoring and alerting of bird care conditions.',
+      'Built threshold alerts and graph visualizations for real-time and historical data.',
+      'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
+    ],
+    stack: ['Python', 'FastAPI', 'REST API', 'React', 'Firebase', 'IoT', 'Rasberrypi Pico W'],
+  },
     {
     name:     'Ask Edrian',
     live:     'https://edrian-ai-profile-assistant.vercel.app',
@@ -121,20 +136,6 @@ const EXTRA_PROJECTS = [
       'Implemented backend AI processing with API endpoints and a responsive frontend for interactive chat.',
     ],
     stack: ['Python', 'FastAPI', 'REST API', 'React', 'Groq', 'REST API', 'JavaScript'],
-  },
-  {
-    name:     'BirdCare',
-    live:     'https://birdcares.online',
-    demo:     'https://drive.google.com/file/d/18t69WY0AAbqG-ekjdDqnoxnfqISeCxHw/view',
-    github:   null,
-    year:     'Nov 2025',
-    subtitle: 'Environment Monitoring App with IoT',
-    bullets: [
-      'Developed BirdCare: mobile app for real-time monitoring and alerting of bird care conditions.',
-      'Built threshold alerts and graph visualizations for real-time and historical data.',
-      'Developed threshold-based alerts to notify users when environmental readings exceed safe ranges.',
-    ],
-    stack: ['Python', 'FastAPI', 'REST API', 'React', 'Firebase', 'IoT', 'Rasberrypi Pico W'],
   },
   {
     name:     'Water Level & Temperature Monitoring',
@@ -203,16 +204,16 @@ const GALLERY = {
     'gallery/transacscope/9.webp',
     'gallery/transacscope/10.webp',
   ],
-  'Ask Edrian': [
-    'gallery/ask-edrian/1.webp',
-  ],
-  'BirdCare':[
+  'BirdCare (Capstone Project)':[
     'gallery/birdcare/1.webp',
     'gallery/birdcare/2.webp',
     'gallery/birdcare/3.webp',
     'gallery/birdcare/4.webp',
     'gallery/birdcare/5.webp',
     'gallery/birdcare/6.webp',
+  ],
+  'Ask Edrian': [
+    'gallery/ask-edrian/1.webp',
   ],
   'Water Level & Temperature Monitoring': [
     'gallery/water-monitoring/1.webp',
