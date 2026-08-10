@@ -468,10 +468,10 @@ a.nav-name:hover { color: var(--accent); }
   flex-wrap: wrap;
 }
 .edu-item:last-child { margin-bottom: 0; }
-.edu-school { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
-.edu-degree { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.edu-title { font-size: 0.9rem; color: var(--navy); }
 .edu-degree-link {
-  color: var(--muted);
+  font-weight: 700;
+  color: var(--navy);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: var(--accent);
@@ -482,6 +482,36 @@ a.nav-name:hover { color: var(--accent); }
 }
 .edu-degree-link:hover { color: var(--accent); }
 .edu-degree-link svg { width: 10px; height: 10px; flex-shrink: 0; }
+.edu-achievements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+.edu-achievements li {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+.edu-achievements li::before {
+  content: "·";
+  position: absolute;
+  left: 2px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.edu-degree-text { font-weight: 700; color: var(--navy); }
+.edu-achievement--clickable {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent);
+  transition: color 0.15s;
+}
+.edu-achievement--clickable:hover { color: var(--accent); }
 .edu-date   { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--muted-lt); white-space: nowrap; padding-top: 2px; }
 
 /* ── Certifications ── */

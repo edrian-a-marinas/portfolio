@@ -1,8 +1,9 @@
 const NAV_LINKS = [
-  { label: 'Skills',     href: '#skills'     },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects',   href: '#projects'   },
-  { label: 'Education',  href: '#education'  },
+  { label: 'Skills',         href: '#skills'         },
+  { label: 'Experience',     href: '#experience'     },
+  { label: 'Projects',       href: '#projects'       },
+  { label: 'Education',      href: '#education'      },
+  { label: 'Certifications', href: '#certifications' },
 ]
 
 const CONTACTS = [
@@ -154,8 +155,18 @@ const EXTRA_PROJECTS = [
 ]
 
 const EDUCATION = [
-  { school: 'Our Lady of Fatima University', degree: 'Bachelor of Science in Information Technology', date: '2022 – 2026', certUrl: '/docs/graduation_certificate.pdf' },
-  { school: 'Arellano University',           degree: 'STEM Strand',                                  date: '2020 – 2022' },
+  {
+    school: 'Our Lady of Fatima University',
+    degree: 'Bachelor of Science in Information Technology',
+    date: '2022 – 2026',
+    certUrl: '/docs/graduation_certificate.pdf',
+    achievements: [
+      { text: 'BirdCare — capstone project nominated for Best in Capstone (see Projects above for full details)', type: 'gallery', key: 'BirdCare (Capstone Project)' },
+      { text: 'CodeChum certificate — Integrated Programming Technologies (Python), First Finisher', type: 'cert', key: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course' },
+      { text: 'Final GWA: 1.85 (1.0 highest, 3.0 lowest)', type: 'plain' },
+    ],
+  },
+  { school: 'Arellano University', degree: 'STEM Strand', date: '2020 – 2022' },
 ]
 
 const CERTIFICATIONS = [
@@ -220,8 +231,5 @@ const GALLERY = {
     'gallery/water-monitoring/2.webp',
     'gallery/water-monitoring/3.webp',
     'gallery/water-monitoring/4.webp',
-  ],
-  'Payroll CLI': [
-    null
   ],
 }
