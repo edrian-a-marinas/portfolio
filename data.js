@@ -29,8 +29,8 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'REST APIs', 'SQLAlchemy', 'Alembic', 'Celery', 'AI/ML', 'LangChain', 'pandas', 'scikit-learn', 'PyTorch', 'Pytest', 'Pydantic', 'WebSocket', 'Webhooks'] },
-  { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Vite', 'Radix UI'] },  
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'Node.js', 'Celery', 'REST APIs', 'SQLAlchemy', 'Alembic', 'AI/ML', 'LangChain', 'pandas', 'scikit-learn', 'PyTorch', 'Pytest', 'Pydantic', 'WebSocket', 'Webhooks'] },
+  { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Radix UI', 'Vite'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL', 'MySQL', 'Supabase'] },
   { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
   { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'CORS','Role-Based Access Control (RBAC)', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Auth (cookies/JWT/oAuth)', 'LLM API Integration', 'RAG Architecture'] },
