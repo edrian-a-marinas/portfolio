@@ -34,7 +34,7 @@ const SKILLS = [
   { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Radix UI', 'Vite'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL', 'MySQL', 'Supabase'] },
   { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
-  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'CORS','Role-Based Access Control (RBAC)', 'Migrations', 'Rate Limiting', 'Security Headers', 'Background Task Processing', 'Auth (cookies/JWT/oAuth)', 'LLM API Integration', 'RAG Architecture'] },
+  { category: 'Concepts',  tags: ['Performance Optimization', 'Redis and Client-Side Caching', 'Data Validations', 'CORS','Role-Based Access Control (RBAC)', 'Migrations', 'Rate Limiting', 'Security Headers', 'Loggers', 'Background Task Processing', 'Auth (cookies/JWT/oAuth)', 'LLM API Integration', 'RAG Architecture'] },
 ]
 
 const EXPERIENCE = [
