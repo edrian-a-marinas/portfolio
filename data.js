@@ -47,7 +47,7 @@ const EXPERIENCE = [
     bullets: [
       "Solved full-stack issues that spanned both frontend and backend, developing a habit of verifying data at its source.",
       "Reduced backend and database load using end-to-end caching, database indexing, and pagination across the stack.",
-      "Reviewed codebases of our org's large, established apps alongside seniors, and picked up real lessons on how to maintain and scale a project as it grows.",
+      "Reviewed codebases of our org's large, established apps alongside seniors, and picked up real lessons on how to maintain and scale a project as it grows, managing tasks through Jira in an Agile workflow.",
       "Enforced access control and permission checks at the API level rather than relying on the interface alone, securing endpoints against direct requests and bypass attempts.",
       "Validated data at every layer — frontend and backend — to prevent invalid or inconsistent data from reaching the database.",
       "Ran automated tests and manual endpoint checks before every push, with QA reviewing and questioning pull requests before merging through the team's CI/CD pipeline.",
