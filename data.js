@@ -159,7 +159,7 @@ const EDUCATION = [
     school: 'Our Lady of Fatima University',
     degree: 'Bachelor of Science in Information Technology',
     date: '2022 – 2026',
-    certUrl: '/docs/graduation_certificate.pdf',
+    certUrl: '/docs/diploma_marinas.pdf',
     achievements: [
       { text: 'BirdCare — capstone project nominated for Best in Capstone (see Projects above for full details)', type: 'gallery', key: 'BirdCare (Capstone Project)' },
       { text: 'CodeChum certificate — Integrated Programming Technologies (Python), First Finisher', type: 'cert', key: 'Integrated Programming Technologies (Python) · CodeChum · Academic Course' },
