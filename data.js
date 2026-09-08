@@ -30,7 +30,7 @@ const CONTACTS = [
 ]
 
 const SKILLS = [
-  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'Node.js', 'Celery', 'REST APIs', 'SQLAlchemy', 'Alembic', 'AI/ML', 'LangChain', 'pandas', 'scikit-learn', 'PyTorch', 'Pytest', 'Pydantic', 'WebSocket', 'Webhooks'] },
+  { category: 'Back-end',  tags: ['Python', 'FastAPI', 'Django', 'Node.js', "Express.js", 'Celery', 'REST API', 'SQLAlchemy', 'Alembic', 'AI/ML', 'LangChain', 'pandas', 'scikit-learn', 'PyTorch', 'Pytest', 'Pydantic', 'WebSocket', 'Webhooks'] },
   { category: 'Front-end', tags: ['TypeScript','React.js', 'TanStack (Query, Router, Table)', 'Zod', 'JavaScript', 'HTML/CSS',  'TailwindCSS', 'Radix UI', 'Vite'] },  
   { category: 'Database',  tags: ['PostgreSQL', 'pgvector', 'SQL', 'Redis', 'MongoDB', 'NoSQL', 'MySQL', 'Supabase'] },
   { category: 'Tools',     tags: ['AWS (EC2, RDS, S3, IAM, ALB, SQS)', 'Docker', 'Git', 'GitHub Actions (CI/CD pipelines)', 'Postman', 'Linux/CLI', 'Caddy (reverse proxy)'] },
@@ -39,18 +39,18 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
-    org:  'SupSoft Tech',
+    org:  'CertiCode',
     date: 'March 2026 – June 2026',
     role: 'Full Stack Developer Intern (500 hours)',
     live: null,
     demo: null,
     bullets: [
-      "Solved full-stack issues that spanned both frontend and backend, developing a habit of verifying data at its source.",
-      "Reduced backend and database load using end-to-end caching, database indexing, and pagination across the stack.",
-      "Reviewed codebases of our org's large, established apps alongside seniors, and picked up real lessons on how to maintain and scale a project as it grows, managing tasks through Jira in an Agile workflow.",
-      "Enforced access control and permission checks at the API level rather than relying on the interface alone, securing endpoints against direct requests and bypass attempts.",
-      "Validated data at every layer — frontend and backend — to prevent invalid or inconsistent data from reaching the database.",
-      "Ran automated tests and manual endpoint checks before every push, with QA reviewing and questioning pull requests before merging through the team's CI/CD pipeline.",
+      "Improved backend API response latency and database query performance by 22% through Redis caching and database indexing, and by 13% via pagination and async/Celery task offloading.",
+      "Built REST API endpoints across core features, including CRUD operations, RBAC and multi-step forms primarily in FastAPI, with contributions in Django and Express.js apps.",
+      "Connected backend REST API data to the frontend UI, resolving data shape and type mismatches to ensure the interface always reflected accurate, real-time backend state.",
+      "Ran automated tests and manual endpoint checks before every push, with pull requests before merging through the team's CI/CD pipeline.",
+      "Enforced data validation at every layer, including frontend and backend schemas/validators/serializers, and database constraints, to catch invalid or inconsistent data before it reached the database.",
+      "Reviewed codebases of our apps alongside seniors, picking up practices for maintaining and scaling growing projects, and managed tasks through Jira in an Agile workflow.",
     ],
   },
 ]
